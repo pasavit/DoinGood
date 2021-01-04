@@ -13,6 +13,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DoinGood.Contracts;
+using System.Security.Claims;
+using DoinGood.ActionFilters;
+using Microsoft.AspNetCore.Http;
 
 namespace DoinGood
 {
@@ -38,6 +41,11 @@ namespace DoinGood
             services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<ClaimsPrincipal>(s => s.GetService<IHttpContextAccessor>().HttpContext.User);
+            services.AddControllers(config =>
+            {
+                config.Filters.Add(typeof(GlobalRouting));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
