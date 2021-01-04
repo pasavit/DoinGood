@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DoinGood.Models
 {
-    public class Task
+    public class Tasks
     {
         [Key]
         public int TaskId { get; set; }

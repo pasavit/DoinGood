@@ -38,6 +38,6 @@ namespace DoinGood.Data
         public DbSet<DeservingCause> DeservingCauses { get; set; }
         public DbSet<Donate> Donations { get; set; }
         public DbSet<InspiredFund> InspiredFunds { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Tasks> Tasks { get; set; }
     }
 }
