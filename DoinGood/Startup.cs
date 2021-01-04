@@ -12,6 +12,7 @@ using DoinGood.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DoinGood.Contracts;
 
 namespace DoinGood
 {
@@ -34,6 +35,7 @@ namespace DoinGood
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

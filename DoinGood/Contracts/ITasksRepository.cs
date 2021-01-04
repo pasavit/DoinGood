@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoinGood.Contracts
 {
-    public interface ITaskRepository : IRepositoryBase<Tasks>
+    public interface ITasksRepository : IRepositoryBase<Tasks>
     {
     }
 }
