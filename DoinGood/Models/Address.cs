@@ -9,18 +9,18 @@ namespace DoinGood.Models
     public class Address
     {
         [Key]
-        public int AddressId;
+        public int AddressId { get; set; }
 
-        public string StreetAddress;
+        public string StreetAddress { get; set; }
 
-        public string City;
+        public string City { get; set; }
 
-        public string State;
+        public string State { get; set; }
 
-        public int Zip;
+        public int Zip { get; set; }
 
-        public int Lat;
+        public int Lat { get; set; }
 
-        public int Lng;
+        public int Lng { get; set; }
     }
 }

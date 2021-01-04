@@ -9,10 +9,10 @@ namespace DoinGood.Models
     public class DeservingCause
     {
         [Key]
-        public int DerservingCauseId;
+        public int DerservingCauseId { get; set; }
 
-        public int CurrentFunds;
+        public int CurrentFunds { get; set; }
 
-        public int NumberOfDonations;
+        public int NumberOfDonations { get; set; }
     }
 }

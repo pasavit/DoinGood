@@ -10,28 +10,30 @@ namespace DoinGood.Models
     public class Catalyst
     {
         [Key]
-        public int CatalystId;
+        public int CatalystId { get; set; }
 
         [ForeignKey("IdentityUser")]
-        public int IdentityUser;
+        public int IdentityUser { get; set; }
 
         [ForeignKey("Address")]
-        public int AddressId;
+        public int AddressId { get; set; }
 
-        public string FirstName;
+        public string FirstName { get; set; }
 
-        public string LastName;
+        public string LastName { get; set; }
 
-        public int DeedCount;
+        public int DeedCount { get; set; }
 
-        public int TastCount;
+        public int TaskCompletedCount { get; set; }
 
-        public int DonateCount;
+        public int DonationCount { get; set; }
 
-        public int TotalContribution;
+        public int ChallengedCount { get; set; }
 
-        public string EmailAddress;
+        public int TotalContribution { get; set; }
 
-        public string Image;
+        public string EmailAddress { get; set; }
+
+        public string Image { get; set; }
     }
 }

@@ -10,23 +10,23 @@ namespace DoinGood.Models
     public class Task
     {
         [Key]
-        public int TaskId;
+        public int TaskId { get; set; }
 
         [ForeignKey("Catalyst")]
-        public int PosterCatalystId;
+        public int PosterCatalystId { get; set; }
 
         [ForeignKey("Catalyst")]
-        public int TaskerCatalystId;
+        public int TaskerCatalystId { get; set; }
 
         [ForeignKey("DeservingCause")]
-        public int DerservingCauseId;
+        public int DerservingCauseId { get; set; }
 
-        public string TaskTitle;
+        public string TaskTitle { get; set; }
 
-        public string TaskDescription;
+        public string TaskDescription { get; set; }
 
-        public int Value;
+        public int Value { get; set; }
 
-        public string Image;
+        public string Image { get; set; } 
     }
 }

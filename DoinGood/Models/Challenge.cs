@@ -10,23 +10,23 @@ namespace DoinGood.Models
     public class Challenge
     {
         [Key]
-        public int ChallengeId;
+        public int ChallengeId { get; set; }
 
         [ForeignKey("Catalyst")]
-        public int CatalystId;
+        public int CatalystId { get; set; }
 
         [ForeignKey("Catalyst")]
-        public int DeedCatalystId;
+        public int DeedCatalystId { get; set; }
 
         [ForeignKey("DeservingCause")]
-        public int DeservingCauseId;
+        public int DeservingCauseId { get; set; }
 
-        public string Impact;
+        public string Impact { get; set; }
 
-        public int DonateAmount;
+        public int DonateAmount { get; set; }
 
-        public int MaxAmount;
+        public int MaxAmount { get; set; }
 
-        public int ChallengeCount;
+        public int ChallengeCount { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace DoinGood.Models
     public class InspiredFund
     {
         [Key]
-        public int InspiredFundId;
+        public int InspiredFundId { get; set; }
 
-        public int CurrentFunds;
+        public int CurrentFunds { get; set; }
     }
 }

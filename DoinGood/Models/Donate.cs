@@ -10,26 +10,26 @@ namespace DoinGood.Models
     public class Donate
     {
         [Key]
-        public int DonationId;
+        public int DonationId { get; set; } 
 
         [ForeignKey("Address")]
-        public int AddressId;
+        public int AddressId { get; set; }
 
         [ForeignKey("Catalyst")]
-        public int PosterCatalystId;
+        public int PosterCatalystId { get; set; }
 
         [ForeignKey("Catalyst")]
-        public int DonorCatalystId;
+        public int DonorCatalystId { get; set; }
 
         [ForeignKey("DerservingCause")]
-        public int DerservingCauseId;
+        public int DerservingCauseId { get; set; }
 
-        public string ItemName;
+        public string ItemName { get; set; }
 
-        public string ItemDescription;
+        public string ItemDescription { get; set; }
 
-        public int Value;
+        public int Value { get; set; }
 
-        public string Image;
+        public string Image { get; set; }
     }
 }
