@@ -8,5 +8,8 @@ namespace DoinGood.Contracts
 {
     public interface ICatalystRepository : IRepositoryBase<Catalyst>
     {
+        Catalyst GetCatalyst(string catalystUserId);
+
+        Catalyst GetCatalystDetails(int id);
     }
 }

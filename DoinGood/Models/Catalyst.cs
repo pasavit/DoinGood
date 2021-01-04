@@ -13,7 +13,7 @@ namespace DoinGood.Models
         public int CatalystId { get; set; }
 
         [ForeignKey("IdentityUser")]
-        public int IdentityUser { get; set; }
+        public string IdentityUserId { get; set; }
 
         [ForeignKey("Address")]
         public int AddressId { get; set; }

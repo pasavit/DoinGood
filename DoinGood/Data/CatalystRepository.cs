@@ -12,5 +12,9 @@ namespace DoinGood.Data
         public CatalystRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
         }
+
+        public Catalyst GetCatalyst(string catalystUserId) => FindByCondition(c => c.IdentityUserId == catalystUserId).FirstOrDefault();
+
+        public Catalyst GetCatalystDetails(int id) => FindByCondition(c => c.CatalystId == id).FirstOrDefault();
     }
 }
