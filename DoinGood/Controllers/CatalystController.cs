@@ -51,7 +51,7 @@ namespace DoinGood.Controllers
         {
             try
             {
-                catalyst.IdentityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                //catalyst.IdentityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _repo.Catalyst.Create(catalyst);
                 _repo.Save();
                 return RedirectToAction("Index");
@@ -100,6 +100,63 @@ namespace DoinGood.Controllers
             try
             {
                 return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        /////////////////////////////////////////////////////////////////
+        /// Deed
+        /////////////////////////////////////////////////////////////////
+        public ActionResult DeedIndex()
+        {
+            var deedList = _repo.Deed.FindAll().ToList();
+            return View(deedList);
+        }
+
+        public ActionResult DeedDetails(int id)
+        {
+            var deed = _repo.Deed.GetDeedDetails(id);
+            return View(deed);
+        }
+        
+        public ActionResult CreateDeed()
+        {
+            Deed deed = new Deed();
+            return View(deed);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateDeed(Deed deed)
+        {
+            try
+            {
+                _repo.Deed.Create(deed);
+                _repo.Save();
+                return RedirectToAction("DeedIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult EditDeed(int id)
+        {
+            var deed = _repo.Deed.GetDeedDetails(id);
+            return View(deed);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditDeed(Deed deed)
+        {
+            try
+            {
+                _repo.Deed.Update(deed);
+                _repo.Save();
+                return RedirectToAction("DeedIndex");
             }
             catch
             {

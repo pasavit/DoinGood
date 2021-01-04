@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace DoinGood
 {
-    public static class APIKeys
+    public static class Keys
     {
-        public static string GoogleApi = "";
     }
 }

@@ -12,5 +12,7 @@ namespace DoinGood.Data
         public DeedRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
         }
+
+        public Deed GetDeedDetails(int id) => FindByCondition(d => d.DeedId == id).FirstOrDefault();
     }
 }
