@@ -115,7 +115,7 @@ namespace DoinGood.Controllers
             return View(deedList);
         }
 
-        public ActionResult DeedDetails(int id)
+        public ActionResult ViewDeed(int id)
         {
             var deed = _repo.Deed.GetDeedDetails(id);
             return View(deed);
