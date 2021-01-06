@@ -12,11 +12,11 @@ namespace DoinGood.Models
         [Key]
         public int TaskId { get; set; }
 
-        [ForeignKey("Catalyst")]
+        [ForeignKey("PosterCatalyst")]
         public int PosterCatalystId { get; set; }
         public Catalyst PosterCatalyst { get; set; }
 
-        [ForeignKey("Catalyst")]
+        [ForeignKey("TaskerCatalyst")]
         public int TaskerCatalystId { get; set; }
         public Catalyst TaskerCatalyst { get; set; }
 

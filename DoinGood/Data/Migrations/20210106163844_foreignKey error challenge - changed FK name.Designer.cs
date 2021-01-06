@@ -4,14 +4,16 @@ using DoinGood.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DoinGood.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210106163844_foreignKey error challenge - changed FK name")]
+    partial class foreignKeyerrorchallengechangedFKname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +107,7 @@ namespace DoinGood.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ChallengeCatalystId")
+                    b.Property<int>("CatalystId")
                         .HasColumnType("int");
 
                     b.Property<int>("ChallengeCount")
@@ -128,7 +130,7 @@ namespace DoinGood.Data.Migrations
 
                     b.HasKey("ChallengeId");
 
-                    b.HasIndex("ChallengeCatalystId");
+                    b.HasIndex("CatalystId");
 
                     b.HasIndex("DeedCatalystId");
 
@@ -211,9 +213,6 @@ namespace DoinGood.Data.Migrations
                     b.Property<int?>("DeservingCauseDerservingCauseId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DonorCatalystId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -223,9 +222,6 @@ namespace DoinGood.Data.Migrations
                     b.Property<string>("ItemName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PosterCatalystId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Value")
                         .HasColumnType("int");
 
@@ -234,10 +230,6 @@ namespace DoinGood.Data.Migrations
                     b.HasIndex("AddressId");
 
                     b.HasIndex("DeservingCauseDerservingCauseId");
-
-                    b.HasIndex("DonorCatalystId");
-
-                    b.HasIndex("PosterCatalystId");
 
                     b.ToTable("Donations");
                 });
@@ -270,17 +262,11 @@ namespace DoinGood.Data.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PosterCatalystId")
-                        .HasColumnType("int");
-
                     b.Property<string>("TaskDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TaskTitle")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TaskerCatalystId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Value")
                         .HasColumnType("int");
@@ -288,10 +274,6 @@ namespace DoinGood.Data.Migrations
                     b.HasKey("TaskId");
 
                     b.HasIndex("DerservingCauseId");
-
-                    b.HasIndex("PosterCatalystId");
-
-                    b.HasIndex("TaskerCatalystId");
 
                     b.ToTable("Tasks");
                 });
@@ -325,15 +307,15 @@ namespace DoinGood.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0b8f7a4e-61ff-407f-8223-5dd5449b2a84",
-                            ConcurrencyStamp = "dd53b01d-c164-47ec-91ac-bdf6c7cd7620",
+                            Id = "034d70cc-977e-4573-a74b-d70b5dd28496",
+                            ConcurrencyStamp = "99b28934-3154-4a5c-8976-5e4ccc4f58f7",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "50540d5e-f5c4-496d-bc0f-0e806a2f5f98",
-                            ConcurrencyStamp = "0ae3945f-67c9-4663-8f1f-a3ecbc23432e",
+                            Id = "640da779-94b2-41de-91d5-cb85642311a5",
+                            ConcurrencyStamp = "410150ec-f854-4df1-8152-9a9bfd5921de",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -523,9 +505,9 @@ namespace DoinGood.Data.Migrations
 
             modelBuilder.Entity("DoinGood.Models.Challenge", b =>
                 {
-                    b.HasOne("DoinGood.Models.Catalyst", "ChallengeCatalyst")
+                    b.HasOne("DoinGood.Models.Catalyst", "Catalyst")
                         .WithMany()
-                        .HasForeignKey("ChallengeCatalystId")
+                        .HasForeignKey("CatalystId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -568,18 +550,6 @@ namespace DoinGood.Data.Migrations
                     b.HasOne("DoinGood.Models.DeservingCause", "DeservingCause")
                         .WithMany()
                         .HasForeignKey("DeservingCauseDerservingCauseId");
-
-                    b.HasOne("DoinGood.Models.Catalyst", "DonorCatalyst")
-                        .WithMany()
-                        .HasForeignKey("DonorCatalystId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DoinGood.Models.Catalyst", "PosterCatalyst")
-                        .WithMany()
-                        .HasForeignKey("PosterCatalystId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("DoinGood.Models.Tasks", b =>
@@ -587,18 +557,6 @@ namespace DoinGood.Data.Migrations
                     b.HasOne("DoinGood.Models.DeservingCause", "DeservingCause")
                         .WithMany()
                         .HasForeignKey("DerservingCauseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DoinGood.Models.Catalyst", "PosterCatalyst")
-                        .WithMany()
-                        .HasForeignKey("PosterCatalystId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DoinGood.Models.Catalyst", "TaskerCatalyst")
-                        .WithMany()
-                        .HasForeignKey("TaskerCatalystId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -16,11 +16,11 @@ namespace DoinGood.Models
         public int AddressId { get; set; }
         public Address Address { get; set; }
 
-        [ForeignKey("Catalyst")]
+        [ForeignKey("PosterCatalyst")]
         public int PosterCatalystId { get; set; }
-        public Catalyst Catalyst { get; set; }
+        public Catalyst PosterCatalyst { get; set; }
 
-        [ForeignKey("Catalyst")]
+        [ForeignKey("DonorCatalyst")]
         public int DonorCatalystId { get; set; }
         public Catalyst DonorCatalyst { get; set; }
 
