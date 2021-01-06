@@ -17,19 +17,10 @@ namespace DoinGood.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<IdentityRole>()
-            .HasData(
-            new IdentityRole
-            {
-                Name = "Benefactor",
-                NormalizedName = "BENEFACTOR"
-            },
-            new IdentityRole
-            {
-                Name = "Admin",
-                NormalizedName = "ADMIN"
-            }
-            );
+            builder.Entity<IdentityRole>().HasData(
+                new IdentityRole{Name = "Benefactor",NormalizedName = "BENEFACTOR"},
+                new IdentityRole{Name = "Admin",NormalizedName = "ADMIN"}
+                );
         }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Catalyst> Catalysts { get; set; }

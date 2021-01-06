@@ -13,11 +13,11 @@ namespace DoinGood.Models
         public int ChallengeId { get; set; }
 
         [ForeignKey("ChallengeCatalyst")]
-        public int ChallengeCatalystId { get; set; }
+        public int? ChallengeCatalystId { get; set; }
         public Catalyst ChallengeCatalyst { get; set; }
 
         [ForeignKey("DeedCatalyst")]
-        public int DeedCatalystId { get; set; }
+        public int? DeedCatalystId { get; set; }
         public Catalyst DeedCatalyst { get; set; }
 
         [ForeignKey("DeservingCause")]
