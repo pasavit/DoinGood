@@ -19,13 +19,13 @@ namespace DoinGood.Controllers
             _repo = repo;
         }
         // GET: CatalystController
-        public ActionResult Index()
+        public ActionResult CatalystIndex()
         {
             var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var catalyst = _repo.Catalyst.GetCatalyst(identityUserId);
             if (catalyst == null)
             {
-                return RedirectToAction("Create");
+                return RedirectToAction("CreateCatalyst");
             }
             return View();
         }
@@ -38,7 +38,7 @@ namespace DoinGood.Controllers
         }
 
         // GET: CatalystController/Create
-        public ActionResult Create()
+        public ActionResult CatalystCreate()
         {
             Catalyst catalyst = new Catalyst();
             return View(catalyst);
@@ -47,14 +47,14 @@ namespace DoinGood.Controllers
         // POST: CatalystController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Catalyst catalyst)
+        public ActionResult CatalystCreate(Catalyst catalyst)
         {
             try
             {
                 //catalyst.IdentityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _repo.Catalyst.Create(catalyst);
                 _repo.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("CatalystIndex");
             }
             catch
             {
@@ -63,7 +63,7 @@ namespace DoinGood.Controllers
         }
 
         // GET: CatalystController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult CatalystEdit(int id)
         {
             var catalyst = _repo.Catalyst.GetCatalystDetails(id);
             return View(catalyst);
@@ -72,13 +72,13 @@ namespace DoinGood.Controllers
         // POST: CatalystController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Catalyst catalyst)
+        public ActionResult CatalystEdit(Catalyst catalyst)
         {
             try
             {
                 _repo.Catalyst.Update(catalyst);
                 _repo.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("CatalystIndex");
             }
             catch
             {
@@ -115,13 +115,13 @@ namespace DoinGood.Controllers
             return View(deedList);
         }
 
-        public ActionResult ViewDeed(int id)
+        public ActionResult DeedView(int id)
         {
             var deed = _repo.Deed.GetDeedDetails(id);
             return View(deed);
         }
         
-        public ActionResult CreateDeed()
+        public ActionResult DeedCreate()
         {
             Deed deed = new Deed();
             return View(deed);
@@ -129,7 +129,7 @@ namespace DoinGood.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateDeed(Deed deed)
+        public ActionResult DeedCreate(Deed deed)
         {
             try
             {
@@ -142,7 +142,7 @@ namespace DoinGood.Controllers
                 return View();
             }
         }
-        public ActionResult EditDeed(int id)
+        public ActionResult DeedEdit(int id)
         {
             var deed = _repo.Deed.GetDeedDetails(id);
             return View(deed);

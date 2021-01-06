@@ -1,0 +1,69 @@
+﻿@model DoinGood.Models.Deed
+
+@{
+    ViewData["Title"] = "DeedEdit";
+}
+
+<h1>DeedEdit</h1>
+
+<h4>Deed</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeedEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DeedId" />
+            <div class="form-group">
+                <label asp-for="CatalystId" class="control-label"></label>
+                <select asp-for="CatalystId" class="form-control" asp-items="ViewBag.CatalystId"></select>
+                <span asp-validation-for="CatalystId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeservingCauseId" class="control-label"></label>
+                <select asp-for="DeservingCauseId" class="form-control" asp-items="ViewBag.DeservingCauseId"></select>
+                <span asp-validation-for="DeservingCauseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Beneficence" class="control-label"></label>
+                <input asp-for="Beneficence" class="form-control" />
+                <span asp-validation-for="Beneficence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Impact" class="control-label"></label>
+                <input asp-for="Impact" class="form-control" />
+                <span asp-validation-for="Impact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonateAmount" class="control-label"></label>
+                <input asp-for="DonateAmount" class="form-control" />
+                <span asp-validation-for="DonateAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxAmount" class="control-label"></label>
+                <input asp-for="MaxAmount" class="form-control" />
+                <span asp-validation-for="MaxAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InspireCount" class="control-label"></label>
+                <input asp-for="InspireCount" class="form-control" />
+                <span asp-validation-for="InspireCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChallengeCount" class="control-label"></label>
+                <input asp-for="ChallengeCount" class="form-control" />
+                <span asp-validation-for="ChallengeCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
