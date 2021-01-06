@@ -1,5 +1,6 @@
 ﻿using DoinGood.Contracts;
 using DoinGood.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace DoinGood.Data
         {
         }
 
-        public Catalyst GetCatalyst(string catalystUserId) => FindByCondition(c => c.IdentityUserId == catalystUserId).FirstOrDefault();
+        public Catalyst GetCatalyst(string catalystUserId) => FindByCondition(c => c.IdentityUserId == catalystUserId).Include(e => e.Address).FirstOrDefault();
 
         public Catalyst GetCatalystDetails(int id) => FindByCondition(c => c.CatalystId == id).FirstOrDefault();
     }

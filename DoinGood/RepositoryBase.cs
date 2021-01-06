@@ -24,10 +24,6 @@ namespace DoinGood
         {
             return ApplicationDbContext.Set<T>().Where(expression).AsNoTracking();
         }
-        public IQueryable<T> FindByConditionInclude(Expression<Func<T, bool>> expression, Expression<Func<T, bool>> includeExpression)
-        {
-            return ApplicationDbContext.Set<T>().Where(expression).Include(includeExpression).AsNoTracking();
-        }
         public void Create(T entity)
         {
             ApplicationDbContext.Set<T>().Add(entity);

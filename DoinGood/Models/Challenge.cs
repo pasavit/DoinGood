@@ -14,12 +14,15 @@ namespace DoinGood.Models
 
         [ForeignKey("Catalyst")]
         public int CatalystId { get; set; }
+        public Catalyst Catalyst { get; set; }
 
         [ForeignKey("Catalyst")]
-        public int DeedCatalystId { get; set; }
+        public int CatalystId_Deed { get; set; }
+        public Catalyst Catalyst_Deed { get; set; }
 
         [ForeignKey("DeservingCause")]
         public int DeservingCauseId { get; set; }
+        public DeservingCause DeservingCause { get; set; }
 
         public string Impact { get; set; }
 

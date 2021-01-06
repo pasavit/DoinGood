@@ -31,7 +31,7 @@ namespace DoinGood.Controllers
         }
 
         // GET: CatalystController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult CatalystDetails(int id)
         {
             var catalyst = _repo.Catalyst.GetCatalystDetails(id);
             return View();
