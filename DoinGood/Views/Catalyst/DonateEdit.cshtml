@@ -1,0 +1,69 @@
+﻿@model DoinGood.Models.Donate
+
+@{
+    ViewData["Title"] = "DonateEdit";
+}
+
+<h1>DonateEdit</h1>
+
+<h4>Donate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DonateEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DonationId" />
+            <div class="form-group">
+                <label asp-for="AddressId" class="control-label"></label>
+                <select asp-for="AddressId" class="form-control" asp-items="ViewBag.AddressId"></select>
+                <span asp-validation-for="AddressId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PosterCatalystId" class="control-label"></label>
+                <select asp-for="PosterCatalystId" class="form-control" asp-items="ViewBag.PosterCatalystId"></select>
+                <span asp-validation-for="PosterCatalystId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonorCatalystId" class="control-label"></label>
+                <select asp-for="DonorCatalystId" class="form-control" asp-items="ViewBag.DonorCatalystId"></select>
+                <span asp-validation-for="DonorCatalystId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DerservingCauseId" class="control-label"></label>
+                <input asp-for="DerservingCauseId" class="form-control" />
+                <span asp-validation-for="DerservingCauseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemName" class="control-label"></label>
+                <input asp-for="ItemName" class="form-control" />
+                <span asp-validation-for="ItemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemDescription" class="control-label"></label>
+                <input asp-for="ItemDescription" class="form-control" />
+                <span asp-validation-for="ItemDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Value" class="control-label"></label>
+                <input asp-for="Value" class="form-control" />
+                <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
