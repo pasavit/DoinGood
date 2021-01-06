@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoinGood.Contracts
 {
-    public interface IInspiredFundRepository : IRepositoryBase<InspiredFund>
+    public interface IFundRepository : IRepositoryBase<Fund>
     {
     }
 }

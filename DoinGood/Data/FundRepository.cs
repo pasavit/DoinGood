@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DoinGood.Data
 {
-    public class InspiredFundRepository : RepositoryBase<InspiredFund>, IInspiredFundRepository
+    public class FundRepository : RepositoryBase<Fund>, IFundRepository
     {
-        public InspiredFundRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
+        public FundRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
         }
     }

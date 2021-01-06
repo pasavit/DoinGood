@@ -11,9 +11,8 @@ namespace DoinGood.Contracts
         ICatalystRepository Catalyst { get; }
         IChallengeRepository Challenge { get; }
         IDeedRepository Deed { get; }
-        IDeservingCauseRepository DeservingCause { get; }
         IDonateRepository Donate { get; }
-        IInspiredFundRepository InspiredFund { get; }
+        IFundRepository Fund { get; }
         ITasksRepository Tasks { get; }
         void Save();
     }

@@ -26,9 +26,8 @@ namespace DoinGood.Data
         public DbSet<Catalyst> Catalysts { get; set; }
         public DbSet<Challenge> Challenges { get; set; }
         public DbSet<Deed> Deeds { get; set; }
-        public DbSet<DeservingCause> DeservingCauses { get; set; }
         public DbSet<Donate> Donations { get; set; }
-        public DbSet<InspiredFund> InspiredFunds { get; set; }
+        public DbSet<Fund> Fund { get; set; }
         public DbSet<Tasks> Tasks { get; set; }
     }
 }

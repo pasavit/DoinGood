@@ -14,9 +14,8 @@ namespace DoinGood
         private ICatalystRepository _catalyst;
         private IChallengeRepository _challenge;
         private IDeedRepository _deed;
-        private IDeservingCauseRepository _deservingCause;
         private IDonateRepository _donate;
-        private IInspiredFundRepository _inspiredFund;
+        private IFundRepository _fund;
         private ITasksRepository _tasks;
 
         public IAddressRepository Address
@@ -63,17 +62,6 @@ namespace DoinGood
                 return _deed;
             }
         }
-        public IDeservingCauseRepository DeservingCause
-        {
-            get
-            {
-                if (_deservingCause == null)
-                {
-                    _deservingCause = new DeservingCauseRepository(_context);
-                }
-                return _deservingCause;
-            }
-        }
         public IDonateRepository Donate
         {
             get
@@ -85,15 +73,15 @@ namespace DoinGood
                 return _donate;
             }
         }
-        public IInspiredFundRepository InspiredFund
+        public IFundRepository Fund
         {
             get
             {
-                if (_inspiredFund == null)
+                if (_fund == null)
                 {
-                    _inspiredFund = new InspiredFundRepository(_context);
+                    _fund = new FundRepository(_context);
                 }
-                return _inspiredFund;
+                return _fund;
             }
         }
         public ITasksRepository Tasks

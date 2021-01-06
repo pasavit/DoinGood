@@ -20,9 +20,9 @@ namespace DoinGood.Models
         public int? DeedCatalystId { get; set; }
         public Catalyst DeedCatalyst { get; set; }
 
-        [ForeignKey("DeservingCause")]
-        public int DeservingCauseId { get; set; }
-        public DeservingCause DeservingCause { get; set; }
+        [ForeignKey("Fund")]
+        public int FundId { get; set; }
+        public Fund Fund { get; set; }
 
         public string Impact { get; set; }
 

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DoinGood.Models
 {
-    public class DeservingCause
+    public class Fund
     {
         [Key]
-        public int DerservingCauseId { get; set; }
+        public int FundId { get; set; }
+
+        public string FundName { get; set; }
 
         public int CurrentFunds { get; set; }
 
