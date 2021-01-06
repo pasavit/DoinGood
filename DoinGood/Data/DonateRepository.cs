@@ -12,5 +12,6 @@ namespace DoinGood.Data
         public DonateRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
         }
+        public Donate GetDonateDetails(int id) => FindByCondition(d => d.DonationId == id).FirstOrDefault();
     }
 }

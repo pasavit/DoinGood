@@ -18,7 +18,6 @@ namespace DoinGood.Controllers
         {
             _repo = repo;
         }
-        // GET: CatalystController
         public ActionResult CatalystIndex()
         {
             var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -30,21 +29,18 @@ namespace DoinGood.Controllers
             return View();
         }
 
-        // GET: CatalystController/Details/5
-        public ActionResult CatalystDetails(int id)
+        public ActionResult CatalystDetail(int id)
         {
             var catalyst = _repo.Catalyst.GetCatalystDetails(id);
-            return View();
+            return View(catalyst);
         }
 
-        // GET: CatalystController/Create
         public ActionResult CatalystCreate()
         {
             Catalyst catalyst = new Catalyst();
             return View(catalyst);
         }
 
-        // POST: CatalystController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CatalystCreate(Catalyst catalyst)
@@ -62,14 +58,12 @@ namespace DoinGood.Controllers
             }
         }
 
-        // GET: CatalystController/Edit/5
         public ActionResult CatalystEdit(int id)
         {
             var catalyst = _repo.Catalyst.GetCatalystDetails(id);
             return View(catalyst);
         }
 
-        // POST: CatalystController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CatalystEdit(Catalyst catalyst)
@@ -86,13 +80,11 @@ namespace DoinGood.Controllers
             }
         }
 
-        // GET: CatalystController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: CatalystController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -115,7 +107,7 @@ namespace DoinGood.Controllers
             return View(deedList);
         }
 
-        public ActionResult DeedView(int id)
+        public ActionResult DeedDetail(int id)
         {
             var deed = _repo.Deed.GetDeedDetails(id);
             return View(deed);
@@ -150,13 +142,151 @@ namespace DoinGood.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditDeed(Deed deed)
+        public ActionResult DeedEdit(Deed deed)
         {
             try
             {
                 _repo.Deed.Update(deed);
                 _repo.Save();
                 return RedirectToAction("DeedIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        /////////////////////////////////////////////////////////////////
+        /// Challenge
+        /////////////////////////////////////////////////////////////////
+        public ActionResult ChallengeCreate()
+        {
+            Deed deed = new Deed();
+            return View(deed);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChallengeCreate(Deed deed)
+        {
+            try
+            {
+                _repo.Deed.Create(deed);
+                _repo.Save();
+                return RedirectToAction("DeedIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        /////////////////////////////////////////////////////////////////
+        /// Donate
+        /////////////////////////////////////////////////////////////////
+        public ActionResult DonateIndex()
+        {
+            var donateList = _repo.Donate.FindAll().ToList();
+            return View(donateList);
+        }
+
+        public ActionResult DonateDetail(int id)
+        {
+            var donate = _repo.Donate.GetDonateDetails(id);
+            return View(donate);
+        }
+
+        public ActionResult DonateCreate()
+        {
+            Donate donate = new Donate();
+            return View(donate);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DonateCreate(Donate donate)
+        {
+            try
+            {
+                _repo.Donate.Create(donate);
+                _repo.Save();
+                return RedirectToAction("DonateIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult DonateEdit(int id)
+        {
+            var donate = _repo.Donate.GetDonateDetails(id);
+            return View(donate);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DonateEdit(Donate donate)
+        {
+            try
+            {
+                _repo.Donate.Update(donate);
+                _repo.Save();
+                return RedirectToAction("DonateIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        /////////////////////////////////////////////////////////////////
+        /// Task
+        /////////////////////////////////////////////////////////////////
+        public ActionResult TasksIndex()
+        {
+            var tasksList = _repo.Tasks.FindAll().ToList();
+            return View(tasksList);
+        }
+
+        public ActionResult TaskDetail(int id)
+        {
+            var tasks = _repo.Tasks.GetTasksDetails(id);
+            return View(tasks);
+        }
+
+        public ActionResult TasksCreate()
+        {
+            Tasks tasks = new Tasks();
+            return View(tasks);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TasksCreate(Tasks tasks)
+        {
+            try
+            {
+                _repo.Tasks.Create(tasks);
+                _repo.Save();
+                return RedirectToAction("TasksIndex");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult TasksEdit(int id)
+        {
+            var tasks = _repo.Tasks.GetTasksDetails(id);
+            return View(tasks);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TasksEdit(Tasks tasks)
+        {
+            try
+            {
+                _repo.Tasks.Update(tasks);
+                _repo.Save();
+                return RedirectToAction("TasksIndex");
             }
             catch
             {

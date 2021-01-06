@@ -8,5 +8,6 @@ namespace DoinGood.Contracts
 {
     public interface ITasksRepository : IRepositoryBase<Tasks>
     {
+        Tasks GetTasksDetails(int id);
     }
 }

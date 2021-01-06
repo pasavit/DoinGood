@@ -12,5 +12,6 @@ namespace DoinGood.Data
         public TasksRepository(ApplicationDbContext applicationDbContext):base(applicationDbContext)
         {
         }
+        public Tasks GetTasksDetails(int id) => FindByCondition(t => t.TaskId == id).FirstOrDefault();
     }
 }
