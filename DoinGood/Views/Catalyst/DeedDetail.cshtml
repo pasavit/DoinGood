@@ -1,10 +1,10 @@
 ﻿@model DoinGood.Models.Deed
 
 @{
-    ViewData["Title"] = "ViewDeed";
+    ViewData["Title"] = "DeedDetail";
 }
 
-<h1>ViewDeed</h1>
+<h1>DeedDetail</h1>
 
 <div>
     <h4>Deed</h4>
@@ -61,6 +61,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.DeedId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="DeedEdit" asp-route-id="@Model.DeedId">Edit</a> |
+    <a asp-action="DeedIndex">Back to List</a>
 </div>

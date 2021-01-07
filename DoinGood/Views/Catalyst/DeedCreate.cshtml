@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateDeed">
+        <form asp-action="DeedCreate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CatalystId" />
             <input type="hidden" asp-for="InspireCount" />
@@ -48,7 +48,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="DeedIndex">Back to List</a>
 </div>
 
 @section Scripts {

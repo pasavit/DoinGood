@@ -7,7 +7,7 @@
 <h1>TasksIndex</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="TasksCreate">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -61,9 +61,8 @@
                 @Html.DisplayFor(modelItem => item.Image)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TaskId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
+                <a asp-action="TasksEdit" asp-route-id="@item.TaskId">Edit</a> |
+                <a asp-action="TasksDetails" asp-route-id="@item.TaskId">Details</a> 
             </td>
         </tr>
 }

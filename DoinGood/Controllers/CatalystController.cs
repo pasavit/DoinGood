@@ -24,9 +24,10 @@ namespace DoinGood.Controllers
             var catalyst = _repo.Catalyst.GetCatalyst(identityUserId);
             if (catalyst == null)
             {
-                return RedirectToAction("CreateCatalyst");
+                return RedirectToAction("CatalystCreate");
             }
-            return View();
+            var catalystList = _repo.Catalyst.FindAll().ToList();
+            return View(catalystList);
         }
 
         public ActionResult CatalystDetail(int id)

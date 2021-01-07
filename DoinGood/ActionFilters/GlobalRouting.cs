@@ -22,7 +22,7 @@ namespace DoinGood.ActionFilters
             {
                 if (_claimsPrincipal.IsInRole("Benefactor"))
                 {
-                    context.Result = new RedirectToActionResult("Index",
+                    context.Result = new RedirectToActionResult("CatalystIndex",
                     "Catalyst", null);
                 }
             }
