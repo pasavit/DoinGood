@@ -338,7 +338,7 @@ ASALocalRun/
 .mfractor/
 
 # Local History for Visual Studio
-.localhistory/
+.ocalhistory/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
@@ -354,3 +354,15 @@ DoinGood/DoinGood/APIKeys.cs
 
 # Keys
 DoinGood/DoinGood/Keys.cs
+
+# APIKey
+C:\Users\Pas\Desktop\dCC\Day 53\DoinGood\DoinGood\APIKey.cs
+
+# APIKey
+C:/Users/Pas/Desktop/dCC/Day 53/DoinGood/DoinGood/APIKey.cs
+
+# APIKey
+DoinGood/DoinGood/APIKey.cs
+
+# APIKey
+DoinGood/APIKey.cs

@@ -11,5 +11,7 @@ namespace DoinGood.Contracts
         Catalyst GetCatalyst(string catalystUserId);
 
         Catalyst GetCatalystDetails(int id);
+
+        Catalyst GeoCode(Catalyst catalyst);
     }
 }
