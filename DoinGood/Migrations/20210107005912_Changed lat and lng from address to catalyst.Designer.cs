@@ -4,14 +4,16 @@ using DoinGood.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DoinGood.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210107005912_Changed lat and lng from address to catalyst")]
+    partial class Changedlatandlngfromaddresstocatalyst
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,11 +79,11 @@ namespace DoinGood.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Lat")
-                        .HasColumnType("float");
+                    b.Property<int>("Lat")
+                        .HasColumnType("int");
 
-                    b.Property<double>("Lng")
-                        .HasColumnType("float");
+                    b.Property<int>("Lng")
+                        .HasColumnType("int");
 
                     b.Property<int>("TaskCompletedCount")
                         .HasColumnType("int");
@@ -310,15 +312,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "181a8672-3549-4568-905d-e174a45b3f5d",
-                            ConcurrencyStamp = "bb7083af-8bc2-427e-b736-22d6a1ccc3a0",
+                            Id = "0440c994-8fba-48c9-818d-a47c4666ce78",
+                            ConcurrencyStamp = "7ad97d5a-34e6-4661-844e-4bf07cc84bf1",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "bdc3d7b2-7b34-4ded-b572-536283867a02",
-                            ConcurrencyStamp = "b9e34f56-48c3-4bb4-97c5-53b7b5d6e827",
+                            Id = "dceebc13-9363-43db-bef1-201c0b7a2c47",
+                            ConcurrencyStamp = "d54842d7-b58a-44b1-9495-bd9a463e8f67",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

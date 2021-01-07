@@ -38,5 +38,9 @@ namespace DoinGood.Models
         public string EmailAddress { get; set; }
 
         public string Image { get; set; }
+
+        public double Lat { get; set; }
+
+        public double Lng { get; set; }
     }
 }

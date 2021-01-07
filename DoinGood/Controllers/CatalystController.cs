@@ -47,7 +47,7 @@ namespace DoinGood.Controllers
         {
             try
             {
-                //catalyst.IdentityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                catalyst.IdentityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _repo.Catalyst.Create(catalyst);
                 _repo.Save();
                 return RedirectToAction("CatalystIndex");
