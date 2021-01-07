@@ -22,7 +22,7 @@ namespace DoinGood.Data
         public Catalyst GeoCode(Catalyst catalyst)
         {
             string address = catalyst.Address.StreetAddress.ToString() + ", " + catalyst.Address.City.ToString() + ", " + catalyst.Address.State.ToString() + ", " + catalyst.Address.Zip.ToString();
-            var geocode = new GoogleLocationService("");
+            var geocode = new GoogleLocationService(APIKey.GoogleApi);
             var coords = geocode.GetLatLongFromAddress(address);
             catalyst.Lat = coords.Latitude;
             catalyst.Lng = coords.Longitude;

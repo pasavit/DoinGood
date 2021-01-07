@@ -13,16 +13,16 @@
         <form asp-action="CatalystEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CatalystId" />
-            <div class="form-group">
-                <label asp-for="IdentityUserId" class="control-label"></label>
-                <select asp-for="IdentityUserId" class="form-control" asp-items="ViewBag.IdentityUserId"></select>
-                <span asp-validation-for="IdentityUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressId" class="control-label"></label>
-                <select asp-for="AddressId" class="form-control" asp-items="ViewBag.AddressId"></select>
-                <span asp-validation-for="AddressId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="IdentityUserId" />
+            <input type="hidden" asp-for="AddressId" />
+            <input type="hidden" asp-for="EmailAddress" class="form-control" value="@User.Identity.Name" />
+            <input type="hidden" asp-for="DeedCount" />
+            <input type="hidden" asp-for="TaskCompletedCount" />
+            <input type="hidden" asp-for="DonationCount" />
+            <input type="hidden" asp-for="ChallengedCount" />
+            <input type="hidden" asp-for="TotalContribution" />
+            <input type="hidden" asp-for="Lat" />
+            <input type="hidden" asp-for="Lng" />
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
@@ -34,34 +34,24 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeedCount" class="control-label"></label>
-                <input asp-for="DeedCount" class="form-control" />
-                <span asp-validation-for="DeedCount" class="text-danger"></span>
+                <label asp-for="Address.StreetAddress" class="control-label"></label>
+                <input asp-for="Address.StreetAddress" class="form-control" />
+                <span asp-validation-for="Address.StreetAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TaskCompletedCount" class="control-label"></label>
-                <input asp-for="TaskCompletedCount" class="form-control" />
-                <span asp-validation-for="TaskCompletedCount" class="text-danger"></span>
+                <label asp-for="Address.City" class="control-label"></label>
+                <input asp-for="Address.City" class="form-control" />
+                <span asp-validation-for="Address.City" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DonationCount" class="control-label"></label>
-                <input asp-for="DonationCount" class="form-control" />
-                <span asp-validation-for="DonationCount" class="text-danger"></span>
+                <label asp-for="Address.State" class="control-label"></label>
+                <input asp-for="Address.State" class="form-control" />
+                <span asp-validation-for="Address.State" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ChallengedCount" class="control-label"></label>
-                <input asp-for="ChallengedCount" class="form-control" />
-                <span asp-validation-for="ChallengedCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalContribution" class="control-label"></label>
-                <input asp-for="TotalContribution" class="form-control" />
-                <span asp-validation-for="TotalContribution" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailAddress" class="control-label"></label>
-                <input asp-for="EmailAddress" class="form-control" />
-                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                <label asp-for="Address.Zip" class="control-label"></label>
+                <input asp-for="Address.Zip" class="form-control" />
+                <span asp-validation-for="Address.Zip" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
@@ -69,7 +59,7 @@
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

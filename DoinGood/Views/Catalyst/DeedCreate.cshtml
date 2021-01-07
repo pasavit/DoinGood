@@ -12,11 +12,9 @@
     <div class="col-md-4">
         <form asp-action="CreateDeed">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CatalystId" class="control-label"></label>
-                <input asp-for="CatalystId" class="form-control" />
-                <span asp-validation-for="CatalystId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="CatalystId" />
+            <input type="hidden" asp-for="InspireCount" />
+            <input type="hidden" asp-for="ChallengeCount" />
             <div class="form-group">
                 <label asp-for="FundId" class="control-label"></label>
                 <input asp-for="FundId" class="form-control" />
@@ -41,16 +39,6 @@
                 <label asp-for="MaxAmount" class="control-label"></label>
                 <input asp-for="MaxAmount" class="form-control" />
                 <span asp-validation-for="MaxAmount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InspireCount" class="control-label"></label>
-                <input asp-for="InspireCount" class="form-control" />
-                <span asp-validation-for="InspireCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ChallengeCount" class="control-label"></label>
-                <input asp-for="ChallengeCount" class="form-control" />
-                <span asp-validation-for="ChallengeCount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
