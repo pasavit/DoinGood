@@ -9,5 +9,7 @@ namespace DoinGood.Contracts
     public interface IDonateRepository : IRepositoryBase<Donate>
     {
         Donate GetDonateDetails(int id);
+        public List<Donate> DonateList();
+
     }
 }

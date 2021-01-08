@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                @Html.DisplayNameFor(model => model.PosterCatalyst.Address)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PosterCatalyst)
@@ -40,7 +40,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Address.Zip)
+                @Html.DisplayFor(modelItem => item.PosterCatalyst.Address.Zip)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PosterCatalyst.FirstName)

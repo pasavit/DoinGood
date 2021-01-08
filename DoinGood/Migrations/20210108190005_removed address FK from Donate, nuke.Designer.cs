@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoinGood.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210107212923_re-init post packages and nuke")]
-    partial class reinitpostpackagesandnuke
+    [Migration("20210108190005_removed address FK from Donate, nuke")]
+    partial class removedaddressFKfromDonatenuke
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -186,9 +186,6 @@ namespace DoinGood.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("DonorCatalystId")
                         .HasColumnType("int");
 
@@ -212,8 +209,6 @@ namespace DoinGood.Migrations
 
                     b.HasKey("DonationId");
 
-                    b.HasIndex("AddressId");
-
                     b.HasIndex("DonorCatalystId");
 
                     b.HasIndex("FundId");
@@ -236,6 +231,9 @@ namespace DoinGood.Migrations
                     b.Property<string>("FundName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Mission")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("NumberOfDonations")
                         .HasColumnType("int");
 
@@ -249,6 +247,79 @@ namespace DoinGood.Migrations
                             FundId = 1,
                             CurrentFunds = 0,
                             FundName = "Inspired Fund",
+                            Mission = "TBD",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 2,
+                            CurrentFunds = 0,
+                            FundName = "American Humane",
+                            Mission = "To ensure the safety, welfare and well-being of animals; to serve in promoting and nurturing the bonds between animals and humans.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 3,
+                            CurrentFunds = 0,
+                            FundName = "American Red Cross",
+                            Mission = "Prevents and alleviates human suffering in the face of emergencies by mobilizing the power of volunteers and the generosity of donors.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 4,
+                            CurrentFunds = 0,
+                            FundName = "Astraea Lesbian Foundation for Justice",
+                            Mission = "Funds LGBTQI activism globally, serving as a feminist social justice hub and working side-by-side with grantee and donor partners to achieve rural, economic, social and gender justice worldwide.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 5,
+                            CurrentFunds = 0,
+                            FundName = "Cancer Research Institute",
+                            Mission = "To save more lives by fueling the discovery and development of powerful immunotherapies for all types of cancer.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 6,
+                            CurrentFunds = 0,
+                            FundName = "Equal Justice Initiative",
+                            Mission = "To end mass incarceration & excessive punishment in the U.S.; to challenge racial & economic injustice; and to protect basic human rights for the most vulnerable people in American society.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 7,
+                            CurrentFunds = 0,
+                            FundName = "Feeding America",
+                            Mission = "To feed America's hungry through a nationwide network of food banks and engage our country in the fight to end hunger.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 8,
+                            CurrentFunds = 0,
+                            FundName = "Homes For Our Troops",
+                            Mission = "To build and donate specially adapted custom homes nationwide for the most severely injured post-9/11 veterans, to enable them to rebuild their lives.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 9,
+                            CurrentFunds = 0,
+                            FundName = "National Wildlife Federation",
+                            Mission = "To unite all Americans to ensure wildlife thrives in a rapidly changing world.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 10,
+                            CurrentFunds = 0,
+                            FundName = "Scholarship America",
+                            Mission = "To mobilize America through scholarships and educational support to make post-secondary education possible for all students.",
                             NumberOfDonations = 0
                         });
                 });
@@ -321,15 +392,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "84cad964-8609-4d0c-81bd-d68080ab52ee",
-                            ConcurrencyStamp = "3d655a77-c72a-48d2-b8dd-11d7702ec1c0",
+                            Id = "0810ffcd-4f82-4c1a-867c-2be627bb2b5e",
+                            ConcurrencyStamp = "30830841-5271-48de-a2e7-70e6b63c3b93",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "b5743f4b-f0ea-4f69-a77f-2926c839b5f2",
-                            ConcurrencyStamp = "635e24b3-5646-46ea-b3a4-389b49f07945",
+                            Id = "43d0827a-2567-49f1-92b5-924e9f24c299",
+                            ConcurrencyStamp = "9fe52b7e-5b39-49ae-a0b6-7d102d92239a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -565,12 +636,6 @@ namespace DoinGood.Migrations
 
             modelBuilder.Entity("DoinGood.Models.Donate", b =>
                 {
-                    b.HasOne("DoinGood.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DoinGood.Models.Catalyst", "DonorCatalyst")
                         .WithMany()
                         .HasForeignKey("DonorCatalystId");
@@ -584,8 +649,6 @@ namespace DoinGood.Migrations
                     b.HasOne("DoinGood.Models.Catalyst", "PosterCatalyst")
                         .WithMany()
                         .HasForeignKey("PosterCatalystId");
-
-                    b.Navigation("Address");
 
                     b.Navigation("DonorCatalyst");
 

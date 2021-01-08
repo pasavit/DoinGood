@@ -184,9 +184,6 @@ namespace DoinGood.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("DonorCatalystId")
                         .HasColumnType("int");
 
@@ -209,8 +206,6 @@ namespace DoinGood.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("DonationId");
-
-                    b.HasIndex("AddressId");
 
                     b.HasIndex("DonorCatalystId");
 
@@ -395,15 +390,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e4c9cd91-7f0e-4d51-8569-f9ec490ba9f4",
-                            ConcurrencyStamp = "75ffe30f-2a57-439d-a0af-6fb2946fd238",
+                            Id = "0810ffcd-4f82-4c1a-867c-2be627bb2b5e",
+                            ConcurrencyStamp = "30830841-5271-48de-a2e7-70e6b63c3b93",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "86e220a3-9b30-4924-8871-7cf23a8e25b8",
-                            ConcurrencyStamp = "eb2b9729-e679-43ce-8813-11c1ddf35831",
+                            Id = "43d0827a-2567-49f1-92b5-924e9f24c299",
+                            ConcurrencyStamp = "9fe52b7e-5b39-49ae-a0b6-7d102d92239a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -639,12 +634,6 @@ namespace DoinGood.Migrations
 
             modelBuilder.Entity("DoinGood.Models.Donate", b =>
                 {
-                    b.HasOne("DoinGood.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DoinGood.Models.Catalyst", "DonorCatalyst")
                         .WithMany()
                         .HasForeignKey("DonorCatalystId");
@@ -658,8 +647,6 @@ namespace DoinGood.Migrations
                     b.HasOne("DoinGood.Models.Catalyst", "PosterCatalyst")
                         .WithMany()
                         .HasForeignKey("PosterCatalystId");
-
-                    b.Navigation("Address");
 
                     b.Navigation("DonorCatalyst");
 

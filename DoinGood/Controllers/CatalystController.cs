@@ -183,7 +183,8 @@ namespace DoinGood.Controllers
         /////////////////////////////////////////////////////////////////
         public ActionResult DonateIndex()
         {
-            var donateList = _repo.Donate.FindAll().ToList();
+            var donateList = _repo.Donate.DonateList();
+
             return View(donateList);
         }
 
@@ -204,9 +205,7 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DonateCreate(Donate donate)
         {
-            var posterCatalyst = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            donate.PosterCatalystId = posterCatalyst.CatalystId;
-            donate.AddressId = posterCatalyst.AddressId;
+            donate.PosterCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
             _repo.Donate.Create(donate);
             _repo.Save();
             return RedirectToAction("DonateIndex");

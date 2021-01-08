@@ -1,5 +1,6 @@
 ﻿using DoinGood.Contracts;
 using DoinGood.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,11 @@ namespace DoinGood.Data
         {
         }
         public Donate GetDonateDetails(int id) => FindByCondition(d => d.DonationId == id).FirstOrDefault();
+
+        public List<Donate> DonateList()
+        {
+            var donateList = FindAll().Include(e => e.Fund).Include(e => e.PosterCatalyst).Include(e => e.PosterCatalyst.Address).ToList();
+            return donateList;
+        }
     }
 }

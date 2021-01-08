@@ -12,10 +12,6 @@ namespace DoinGood.Models
         [Key]
         public int DonationId { get; set; } 
 
-        [ForeignKey("Address")]
-        public int AddressId { get; set; }
-        public Address Address { get; set; }
-
         [ForeignKey("PosterCatalyst")]
         public int? PosterCatalystId { get; set; }
         public Catalyst PosterCatalyst { get; set; }
