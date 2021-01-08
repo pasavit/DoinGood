@@ -134,6 +134,7 @@ namespace DoinGood.Controllers
         }
         public ActionResult DeedEdit(int id)
         {
+            ViewBag.fundList = new SelectList(_repo.Fund.FindAll(), "FundId", "FundName");
             var deed = _repo.Deed.GetDeedDetails(id);
             return View(deed);
         }
