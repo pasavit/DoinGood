@@ -13,7 +13,7 @@ namespace DoinGood.Data
         public DonateRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
         }
-        public Donate GetDonateDetails(int id) => FindByCondition(d => d.DonationId == id).FirstOrDefault();
+        public Donate GetDonateDetails(int id) => FindByCondition(d => d.DonationId == id).Include(e => e.Fund).Include(e => e.PosterCatalyst).Include(e => e.PosterCatalyst.Address).FirstOrDefault();
 
         public List<Donate> DonateList()
         {

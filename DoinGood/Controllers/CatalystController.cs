@@ -212,6 +212,7 @@ namespace DoinGood.Controllers
         }
         public ActionResult DonateEdit(int id)
         {
+            ViewBag.fundList = _repo.Fund.FundList();
             var donate = _repo.Donate.GetDonateDetails(id);
             return View(donate);
         }
