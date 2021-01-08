@@ -184,7 +184,6 @@ namespace DoinGood.Controllers
         public ActionResult DonateIndex()
         {
             var donateList = _repo.Donate.DonateList();
-
             return View(donateList);
         }
 
@@ -237,11 +236,11 @@ namespace DoinGood.Controllers
         /////////////////////////////////////////////////////////////////
         public ActionResult TasksIndex()
         {
-            var tasksList = _repo.Tasks.FindAll().ToList();
+            var tasksList = _repo.Tasks.TasksList();
             return View(tasksList);
         }
 
-        public ActionResult TaskDetail(int id)
+        public ActionResult TasksDetail(int id)
         {
             var tasks = _repo.Tasks.GetTasksDetails(id);
             return View(tasks);
@@ -250,6 +249,7 @@ namespace DoinGood.Controllers
         public ActionResult TasksCreate()
         {
             Tasks tasks = new Tasks();
+            ViewBag.fundList = _repo.Fund.FundList();
             return View(tasks);
         }
 
@@ -257,19 +257,14 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TasksCreate(Tasks tasks)
         {
-            try
-            {
-                _repo.Tasks.Create(tasks);
-                _repo.Save();
-                return RedirectToAction("TasksIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            tasks.PosterCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            _repo.Tasks.Create(tasks);
+            _repo.Save();
+            return RedirectToAction("TasksIndex");
         }
         public ActionResult TasksEdit(int id)
         {
+            ViewBag.fundList = _repo.Fund.FundList();
             var tasks = _repo.Tasks.GetTasksDetails(id);
             return View(tasks);
         }

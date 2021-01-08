@@ -13,40 +13,32 @@
         <form asp-action="TasksEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TaskId" />
+            <input type="hidden" asp-for="PosterCatalystId" />
+            <input type="hidden" asp-for="PosterCatalystId" />
             <div class="form-group">
-                <label asp-for="PosterCatalystId" class="control-label"></label>
-                <select asp-for="PosterCatalystId" class="form-control" asp-items="ViewBag.PosterCatalystId"></select>
-                <span asp-validation-for="PosterCatalystId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TaskerCatalystId" class="control-label"></label>
-                <select asp-for="TaskerCatalystId" class="form-control" asp-items="ViewBag.TaskerCatalystId"></select>
-                <span asp-validation-for="TaskerCatalystId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FundId" class="control-label"></label>
-                <select asp-for="FundId" class="form-control" asp-items="ViewBag.DerservingCauseId"></select>
-                <span asp-validation-for="FundId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TaskTitle" class="control-label"></label>
-                <input asp-for="TaskTitle" class="form-control" />
+                <label asp-for="TaskTitle" class="control-label">TASK YOU NEED COMPLETED</label>
+                <input asp-for="TaskTitle" class="form-control" placeholder="TASK NAME" />
                 <span asp-validation-for="TaskTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TaskDescription" class="control-label"></label>
-                <input asp-for="TaskDescription" class="form-control" />
+                <label asp-for="TaskDescription" class="control-label">PLEASE DESCRIBE THE TASK IN DETAIL</label>
+                <input asp-for="TaskDescription" class="form-control" placeholder="DESCRIPTION" />
                 <span asp-validation-for="TaskDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Value" class="control-label"></label>
+                <label asp-for="Value" class="control-label">VALUE<sup> *to be donated</sup></label>
                 <input asp-for="Value" class="form-control" />
                 <span asp-validation-for="Value" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
+                <label asp-for="Image" class="control-label">IMAGE</label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundId">SELECT A CAUSE TO SUPPORT</label>
+                <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
+                <span asp-validation-for="FundId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

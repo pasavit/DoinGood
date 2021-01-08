@@ -16,9 +16,6 @@
                 @Html.DisplayNameFor(model => model.PosterCatalyst)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TaskerCatalyst)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Fund)
             </th>
             <th>
@@ -40,13 +37,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PosterCatalyst.CatalystId)
+                @Html.DisplayFor(modelItem => item.PosterCatalyst.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TaskerCatalyst.CatalystId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fund.FundId)
+                @Html.DisplayFor(modelItem => item.Fund.FundName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TaskTitle)
@@ -62,7 +56,7 @@
             </td>
             <td>
                 <a asp-action="TasksEdit" asp-route-id="@item.TaskId">Edit</a> |
-                <a asp-action="TasksDetails" asp-route-id="@item.TaskId">Details</a> 
+                <a asp-action="TasksDetail" asp-route-id="@item.TaskId">Details</a> 
             </td>
         </tr>
 }
