@@ -24,7 +24,8 @@ namespace DoinGood.Controllers
             var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var catalyst = _repo.Catalyst.GetCatalyst(identityUserId);
             List<Fund> fundList = _repo.Fund.FindAll().ToList();
-            ViewBag.fundList = new SelectList(fundList);
+            ViewBag.fundList = new SelectList(fundList, "FundId", "FundName");
+            //ViewBag.fundList = _repo.Fund.FindAll().ToList();
             if (catalyst == null)
             {
                 return RedirectToAction("CatalystCreate");
@@ -122,6 +123,8 @@ namespace DoinGood.Controllers
         public ActionResult DeedCreate()
         {
             Deed deed = new Deed();
+            List<Fund> fundList = _repo.Fund.FindAll().ToList();
+            ViewBag.fundList = new SelectList(fundList, "FundId", "FundName");
             return View(deed);
         }
 

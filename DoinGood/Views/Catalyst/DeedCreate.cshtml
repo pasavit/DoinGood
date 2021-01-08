@@ -22,8 +22,8 @@
             </div>*@
         <div class="form-group">
             <label asp-for="FundId"></label>
-            @*<select asp-for="FundId" class="form-control" asp-items="@ViewBag.fundList"></select>*@
-            @Html.DropDownList("Items", ViewBag.fundList as SelectList, "Select Fund", new { @class = "form-control" })
+            <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
+            @*@Html.DropDownList("Items", ViewBag.fundList as SelectList, "Select Fund", new { @class = "form-control" })*@
             <span asp-validation-for="FundId" class="text-danger"></span>
         </div>
             <div class="form-group">
