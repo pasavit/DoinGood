@@ -1,5 +1,6 @@
 ﻿using DoinGood.Contracts;
 using DoinGood.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,12 @@ namespace DoinGood.Data
     {
         public FundRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
+        }
+
+        public SelectList FundList()
+        {
+            var fundList = new SelectList(FindAll(), "FundId", "FundName");
+            return fundList;
         }
     }
 }

@@ -14,25 +14,20 @@
             @Html.DisplayNameFor(model => model.Address)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address.AddressId)
+            @Html.DisplayFor(model => model.Address.Zip)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PosterCatalyst)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PosterCatalyst.CatalystId)
+            @Html.DisplayFor(model => model.PosterCatalyst.FirstName)
         </dd>
+
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DonorCatalyst)
+            @Html.DisplayNameFor(model => model.Fund)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DonorCatalyst.CatalystId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FundId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FundId)
+            @Html.DisplayFor(model => model.Fund.FundName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ItemName)

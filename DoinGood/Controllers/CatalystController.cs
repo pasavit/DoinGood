@@ -119,7 +119,7 @@ namespace DoinGood.Controllers
         public ActionResult DeedCreate()
         {
             Deed deed = new Deed();
-            ViewBag.fundList = new SelectList(_repo.Fund.FindAll(), "FundId", "FundName");
+            ViewBag.fundList = _repo.Fund.FundList();
             return View(deed);
         }
 
@@ -134,7 +134,7 @@ namespace DoinGood.Controllers
         }
         public ActionResult DeedEdit(int id)
         {
-            ViewBag.fundList = new SelectList(_repo.Fund.FindAll(), "FundId", "FundName");
+            ViewBag.fundList = _repo.Fund.FundList();
             var deed = _repo.Deed.GetDeedDetails(id);
             return View(deed);
         }
@@ -196,6 +196,7 @@ namespace DoinGood.Controllers
         public ActionResult DonateCreate()
         {
             Donate donate = new Donate();
+            ViewBag.fundList = _repo.Fund.FundList();
             return View(donate);
         }
 
@@ -203,16 +204,12 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DonateCreate(Donate donate)
         {
-            try
-            {
-                _repo.Donate.Create(donate);
-                _repo.Save();
-                return RedirectToAction("DonateIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            var posterCatalyst = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            donate.PosterCatalystId = posterCatalyst.CatalystId;
+            donate.AddressId = posterCatalyst.AddressId;
+            _repo.Donate.Create(donate);
+            _repo.Save();
+            return RedirectToAction("DonateIndex");
         }
         public ActionResult DonateEdit(int id)
         {

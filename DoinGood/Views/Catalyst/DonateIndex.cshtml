@@ -19,9 +19,6 @@
                 @Html.DisplayNameFor(model => model.PosterCatalyst)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DonorCatalyst)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FundId)
             </th>
             <th>
@@ -43,16 +40,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Address.AddressId)
+                @Html.DisplayFor(modelItem => item.Address.Zip)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PosterCatalyst.CatalystId)
+                @Html.DisplayFor(modelItem => item.PosterCatalyst.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DonorCatalyst.CatalystId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FundId)
+                @Html.DisplayFor(modelItem => item.Fund.FundName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ItemName)

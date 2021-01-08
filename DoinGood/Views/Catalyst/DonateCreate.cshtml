@@ -12,42 +12,33 @@
     <div class="col-md-4">
         <form asp-action="DonateCreate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AddressId" />
+            <input type="hidden" asp-for="PosterCatalystId" />
+            <input type="hidden" asp-for="DonorCatalystId" />
             <div class="form-group">
-                <label asp-for="AddressId" class="control-label"></label>
-                <select asp-for="AddressId" class ="form-control" asp-items="ViewBag.AddressId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="PosterCatalystId" class="control-label"></label>
-                <select asp-for="PosterCatalystId" class ="form-control" asp-items="ViewBag.PosterCatalystId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="DonorCatalystId" class="control-label"></label>
-                <select asp-for="DonorCatalystId" class ="form-control" asp-items="ViewBag.DonorCatalystId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="FundId" class="control-label"></label>
-                <input asp-for="FundId" class="form-control" />
-                <span asp-validation-for="FundId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ItemName" class="control-label"></label>
-                <input asp-for="ItemName" class="form-control" />
+                <label asp-for="ItemName" class="control-label">WHAT WOULD YOU LIKE TO DONATE?</label>
+                <input asp-for="ItemName" class="form-control" placeholder="ITEM NAME"/>
                 <span asp-validation-for="ItemName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ItemDescription" class="control-label"></label>
-                <input asp-for="ItemDescription" class="form-control" />
+                <label asp-for="ItemDescription" class="control-label">DESCRIBE YOUR TIEM</label>
+                <input asp-for="ItemDescription" class="form-control" placeholder="DESCRIPTION/CONDITION"/>
                 <span asp-validation-for="ItemDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Value" class="control-label"></label>
+                <label asp-for="Value" class="control-label">VALUE<sup> *to be donated</sup></label>
                 <input asp-for="Value" class="form-control" />
                 <span asp-validation-for="Value" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
+                <label asp-for="Image" class="control-label">IMAGE</label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundId">SELECT A CAUSE TO SUPPORT</label>
+                <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
+                <span asp-validation-for="FundId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
