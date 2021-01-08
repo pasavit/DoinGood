@@ -10,12 +10,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdentityUser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
@@ -37,16 +31,7 @@
                 @Html.DisplayNameFor(model => model.TotalContribution)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmailAddress)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lng)
             </th>
             <th></th>
         </tr>
@@ -54,12 +39,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address.AddressId)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -82,16 +61,7 @@
                 @Html.DisplayFor(modelItem => item.TotalContribution)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lng)
             </td>
             <td>
                 <a asp-action="CatalystEdit" asp-route-id="@item.CatalystId">Edit</a> |

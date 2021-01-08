@@ -10,23 +10,23 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoinGood.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210107010753_changed lat and lng from int to dbl")]
-    partial class changedlatandlngfrominttodbl
+    [Migration("20210108010311_updated funds model and seeded funds db")]
+    partial class updatedfundsmodelandseededfundsdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("DoinGood.Models.Address", b =>
                 {
                     b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
@@ -50,7 +50,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("CatalystId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
@@ -105,7 +105,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("ChallengeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("ChallengeCatalystId")
                         .HasColumnType("int");
@@ -144,7 +144,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("DeedId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Beneficence")
                         .HasColumnType("nvarchar(max)");
@@ -184,7 +184,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("DonationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
@@ -228,12 +228,15 @@ namespace DoinGood.Migrations
                     b.Property<int>("FundId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("CurrentFunds")
                         .HasColumnType("int");
 
                     b.Property<string>("FundName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mission")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NumberOfDonations")
@@ -242,6 +245,88 @@ namespace DoinGood.Migrations
                     b.HasKey("FundId");
 
                     b.ToTable("Fund");
+
+                    b.HasData(
+                        new
+                        {
+                            FundId = 1,
+                            CurrentFunds = 0,
+                            FundName = "Inspired Fund",
+                            Mission = "TBD",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 2,
+                            CurrentFunds = 0,
+                            FundName = "American Humane",
+                            Mission = "To ensure the safety, welfare and well-being of animals; to serve in promoting and nurturing the bonds between animals and humans.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 3,
+                            CurrentFunds = 0,
+                            FundName = "American Red Cross",
+                            Mission = "Prevents and alleviates human suffering in the face of emergencies by mobilizing the power of volunteers and the generosity of donors.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 4,
+                            CurrentFunds = 0,
+                            FundName = "Astraea Lesbian Foundation for Justice",
+                            Mission = "Funds LGBTQI activism globally, serving as a feminist social justice hub and working side-by-side with grantee and donor partners to achieve rural, economic, social and gender justice worldwide.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 5,
+                            CurrentFunds = 0,
+                            FundName = "Cancer Research Institute",
+                            Mission = "To save more lives by fueling the discovery and development of powerful immunotherapies for all types of cancer.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 6,
+                            CurrentFunds = 0,
+                            FundName = "Equal Justice Initiative",
+                            Mission = "To end mass incarceration & excessive punishment in the U.S.; to challenge racial & economic injustice; and to protect basic human rights for the most vulnerable people in American society.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 7,
+                            CurrentFunds = 0,
+                            FundName = "Feeding America",
+                            Mission = "To feed America's hungry through a nationwide network of food banks and engage our country in the fight to end hunger.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 8,
+                            CurrentFunds = 0,
+                            FundName = "Homes For Our Troops",
+                            Mission = "To build and donate specially adapted custom homes nationwide for the most severely injured post-9/11 veterans, to enable them to rebuild their lives.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 9,
+                            CurrentFunds = 0,
+                            FundName = "National Wildlife Federation",
+                            Mission = "To unite all Americans to ensure wildlife thrives in a rapidly changing world.",
+                            NumberOfDonations = 0
+                        },
+                        new
+                        {
+                            FundId = 10,
+                            CurrentFunds = 0,
+                            FundName = "Scholarship America",
+                            Mission = "To mobilize America through scholarships and educational support to make post-secondary education possible for all students.",
+                            NumberOfDonations = 0
+                        });
                 });
 
             modelBuilder.Entity("DoinGood.Models.Tasks", b =>
@@ -249,7 +334,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("FundId")
                         .HasColumnType("int");
@@ -293,18 +378,18 @@ namespace DoinGood.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
+                        .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
@@ -312,15 +397,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "181a8672-3549-4568-905d-e174a45b3f5d",
-                            ConcurrencyStamp = "bb7083af-8bc2-427e-b736-22d6a1ccc3a0",
+                            Id = "e4c9cd91-7f0e-4d51-8569-f9ec490ba9f4",
+                            ConcurrencyStamp = "75ffe30f-2a57-439d-a0af-6fb2946fd238",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "bdc3d7b2-7b34-4ded-b572-536283867a02",
-                            ConcurrencyStamp = "b9e34f56-48c3-4bb4-97c5-53b7b5d6e827",
+                            Id = "86e220a3-9b30-4924-8871-7cf23a8e25b8",
+                            ConcurrencyStamp = "eb2b9729-e679-43ce-8813-11c1ddf35831",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -331,7 +416,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -363,8 +448,8 @@ namespace DoinGood.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -376,12 +461,12 @@ namespace DoinGood.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -399,17 +484,17 @@ namespace DoinGood.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
+                        .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
+                        .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
@@ -420,7 +505,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -506,6 +591,10 @@ namespace DoinGood.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("IdentityUser");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Challenge", b =>
@@ -523,6 +612,12 @@ namespace DoinGood.Migrations
                         .HasForeignKey("FundId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ChallengeCatalyst");
+
+                    b.Navigation("DeedCatalyst");
+
+                    b.Navigation("Fund");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Deed", b =>
@@ -538,6 +633,10 @@ namespace DoinGood.Migrations
                         .HasForeignKey("FundId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Catalyst");
+
+                    b.Navigation("Fund");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Donate", b =>
@@ -561,6 +660,14 @@ namespace DoinGood.Migrations
                     b.HasOne("DoinGood.Models.Catalyst", "PosterCatalyst")
                         .WithMany()
                         .HasForeignKey("PosterCatalystId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("DonorCatalyst");
+
+                    b.Navigation("Fund");
+
+                    b.Navigation("PosterCatalyst");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Tasks", b =>
@@ -578,6 +685,12 @@ namespace DoinGood.Migrations
                     b.HasOne("DoinGood.Models.Catalyst", "TaskerCatalyst")
                         .WithMany()
                         .HasForeignKey("TaskerCatalystId");
+
+                    b.Navigation("Fund");
+
+                    b.Navigation("PosterCatalyst");
+
+                    b.Navigation("TaskerCatalyst");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

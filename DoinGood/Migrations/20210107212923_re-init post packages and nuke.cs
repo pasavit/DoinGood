@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DoinGood.Migrations
 {
-    public partial class Changedfundssetup : Migration
+    public partial class reinitpostpackagesandnuke : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,14 +11,12 @@ namespace DoinGood.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    AddressId = table.Column<int>(nullable: false)
+                    AddressId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StreetAddress = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    State = table.Column<string>(nullable: true),
-                    Zip = table.Column<int>(nullable: false),
-                    Lat = table.Column<int>(nullable: false),
-                    Lng = table.Column<int>(nullable: false)
+                    StreetAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Zip = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,10 +27,10 @@ namespace DoinGood.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,21 +41,21 @@ namespace DoinGood.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,11 +66,11 @@ namespace DoinGood.Migrations
                 name: "Fund",
                 columns: table => new
                 {
-                    FundId = table.Column<int>(nullable: false)
+                    FundId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FundName = table.Column<string>(nullable: true),
-                    CurrentFunds = table.Column<int>(nullable: false),
-                    NumberOfDonations = table.Column<int>(nullable: false)
+                    FundName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CurrentFunds = table.Column<int>(type: "int", nullable: false),
+                    NumberOfDonations = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,11 +81,11 @@ namespace DoinGood.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(nullable: false),
-                    ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -104,11 +102,11 @@ namespace DoinGood.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(nullable: false),
-                    ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -125,10 +123,10 @@ namespace DoinGood.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(nullable: false),
-                    ProviderKey = table.Column<string>(nullable: false),
-                    ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -145,8 +143,8 @@ namespace DoinGood.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -169,10 +167,10 @@ namespace DoinGood.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    Value = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -189,19 +187,21 @@ namespace DoinGood.Migrations
                 name: "Catalysts",
                 columns: table => new
                 {
-                    CatalystId = table.Column<int>(nullable: false)
+                    CatalystId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdentityUserId = table.Column<string>(nullable: true),
-                    AddressId = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    DeedCount = table.Column<int>(nullable: false),
-                    TaskCompletedCount = table.Column<int>(nullable: false),
-                    DonationCount = table.Column<int>(nullable: false),
-                    ChallengedCount = table.Column<int>(nullable: false),
-                    TotalContribution = table.Column<int>(nullable: false),
-                    EmailAddress = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true)
+                    IdentityUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    AddressId = table.Column<int>(type: "int", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeedCount = table.Column<int>(type: "int", nullable: false),
+                    TaskCompletedCount = table.Column<int>(type: "int", nullable: false),
+                    DonationCount = table.Column<int>(type: "int", nullable: false),
+                    ChallengedCount = table.Column<int>(type: "int", nullable: false),
+                    TotalContribution = table.Column<int>(type: "int", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Lat = table.Column<double>(type: "float", nullable: false),
+                    Lng = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -224,15 +224,15 @@ namespace DoinGood.Migrations
                 name: "Challenges",
                 columns: table => new
                 {
-                    ChallengeId = table.Column<int>(nullable: false)
+                    ChallengeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ChallengeCatalystId = table.Column<int>(nullable: true),
-                    DeedCatalystId = table.Column<int>(nullable: true),
-                    FundId = table.Column<int>(nullable: false),
-                    Impact = table.Column<string>(nullable: true),
-                    DonateAmount = table.Column<int>(nullable: false),
-                    MaxAmount = table.Column<int>(nullable: false),
-                    ChallengeCount = table.Column<int>(nullable: false)
+                    ChallengeCatalystId = table.Column<int>(type: "int", nullable: true),
+                    DeedCatalystId = table.Column<int>(type: "int", nullable: true),
+                    FundId = table.Column<int>(type: "int", nullable: false),
+                    Impact = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DonateAmount = table.Column<int>(type: "int", nullable: false),
+                    MaxAmount = table.Column<int>(type: "int", nullable: false),
+                    ChallengeCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -261,16 +261,16 @@ namespace DoinGood.Migrations
                 name: "Deeds",
                 columns: table => new
                 {
-                    DeedId = table.Column<int>(nullable: false)
+                    DeedId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CatalystId = table.Column<int>(nullable: false),
-                    FundId = table.Column<int>(nullable: false),
-                    Beneficence = table.Column<string>(nullable: true),
-                    Impact = table.Column<string>(nullable: true),
-                    DonateAmount = table.Column<int>(nullable: false),
-                    MaxAmount = table.Column<int>(nullable: false),
-                    InspireCount = table.Column<int>(nullable: false),
-                    ChallengeCount = table.Column<int>(nullable: false)
+                    CatalystId = table.Column<int>(type: "int", nullable: false),
+                    FundId = table.Column<int>(type: "int", nullable: false),
+                    Beneficence = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Impact = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DonateAmount = table.Column<int>(type: "int", nullable: false),
+                    MaxAmount = table.Column<int>(type: "int", nullable: false),
+                    InspireCount = table.Column<int>(type: "int", nullable: false),
+                    ChallengeCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -293,16 +293,16 @@ namespace DoinGood.Migrations
                 name: "Donations",
                 columns: table => new
                 {
-                    DonationId = table.Column<int>(nullable: false)
+                    DonationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AddressId = table.Column<int>(nullable: false),
-                    PosterCatalystId = table.Column<int>(nullable: true),
-                    DonorCatalystId = table.Column<int>(nullable: true),
-                    FundId = table.Column<int>(nullable: false),
-                    ItemName = table.Column<string>(nullable: true),
-                    ItemDescription = table.Column<string>(nullable: true),
-                    Value = table.Column<int>(nullable: false),
-                    Image = table.Column<string>(nullable: true)
+                    AddressId = table.Column<int>(type: "int", nullable: false),
+                    PosterCatalystId = table.Column<int>(type: "int", nullable: true),
+                    DonorCatalystId = table.Column<int>(type: "int", nullable: true),
+                    FundId = table.Column<int>(type: "int", nullable: false),
+                    ItemName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ItemDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -320,42 +320,36 @@ namespace DoinGood.Migrations
                         principalColumn: "CatalystId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Donations_Fund_FundId",
-                        column: x => x.FundId,
-                        principalTable: "Fund",
-                        principalColumn: "FundId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Donations_Catalysts_PosterCatalystId",
                         column: x => x.PosterCatalystId,
                         principalTable: "Catalysts",
                         principalColumn: "CatalystId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Donations_Fund_FundId",
+                        column: x => x.FundId,
+                        principalTable: "Fund",
+                        principalColumn: "FundId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Tasks",
                 columns: table => new
                 {
-                    TaskId = table.Column<int>(nullable: false)
+                    TaskId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PosterCatalystId = table.Column<int>(nullable: true),
-                    TaskerCatalystId = table.Column<int>(nullable: true),
-                    FundId = table.Column<int>(nullable: false),
-                    TaskTitle = table.Column<string>(nullable: true),
-                    TaskDescription = table.Column<string>(nullable: true),
-                    Value = table.Column<int>(nullable: false),
-                    Image = table.Column<string>(nullable: true)
+                    PosterCatalystId = table.Column<int>(type: "int", nullable: true),
+                    TaskerCatalystId = table.Column<int>(type: "int", nullable: true),
+                    FundId = table.Column<int>(type: "int", nullable: false),
+                    TaskTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaskDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tasks", x => x.TaskId);
-                    table.ForeignKey(
-                        name: "FK_Tasks_Fund_FundId",
-                        column: x => x.FundId,
-                        principalTable: "Fund",
-                        principalColumn: "FundId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tasks_Catalysts_PosterCatalystId",
                         column: x => x.PosterCatalystId,
@@ -368,17 +362,28 @@ namespace DoinGood.Migrations
                         principalTable: "Catalysts",
                         principalColumn: "CatalystId",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Tasks_Fund_FundId",
+                        column: x => x.FundId,
+                        principalTable: "Fund",
+                        principalColumn: "FundId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2d3d98e3-93a8-4c81-8277-85c3840bb2c8", "0e8364e8-53b6-455f-85cd-51d62b69077f", "Benefactor", "BENEFACTOR" });
+                values: new object[] { "84cad964-8609-4d0c-81bd-d68080ab52ee", "3d655a77-c72a-48d2-b8dd-11d7702ec1c0", "Benefactor", "BENEFACTOR" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "991d9ff7-6e7a-44bd-8a85-f06a523633d5", "ed75868e-2409-4e35-8ab7-dd6f0d9d6641", "Admin", "ADMIN" });
+                values: new object[] { "b5743f4b-f0ea-4f69-a77f-2926c839b5f2", "635e24b3-5646-46ea-b3a4-389b49f07945", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "Fund",
+                columns: new[] { "FundId", "CurrentFunds", "FundName", "NumberOfDonations" },
+                values: new object[] { 1, 0, "Inspired Fund", 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -523,10 +528,10 @@ namespace DoinGood.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Fund");
+                name: "Catalysts");
 
             migrationBuilder.DropTable(
-                name: "Catalysts");
+                name: "Fund");
 
             migrationBuilder.DropTable(
                 name: "Addresses");

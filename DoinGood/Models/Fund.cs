@@ -16,5 +16,7 @@ namespace DoinGood.Models
         public int CurrentFunds { get; set; }
 
         public int NumberOfDonations { get; set; }
+
+        public string Mission { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using DoinGood.Contracts;
 using DoinGood.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DoinGood.Controllers
 {
@@ -22,6 +23,8 @@ namespace DoinGood.Controllers
         {
             var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var catalyst = _repo.Catalyst.GetCatalyst(identityUserId);
+            List<Fund> fundList = _repo.Fund.FindAll().ToList();
+            ViewBag.fundList = new SelectList(fundList);
             if (catalyst == null)
             {
                 return RedirectToAction("CatalystCreate");
@@ -72,6 +75,7 @@ namespace DoinGood.Controllers
         {
             try
             {
+                catalyst = _repo.Catalyst.GeoCode(catalyst);
                 _repo.Catalyst.Update(catalyst);
                 _repo.Save();
                 return RedirectToAction("CatalystIndex");

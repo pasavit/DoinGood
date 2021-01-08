@@ -10,32 +10,26 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoinGood.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210106213949_Changed funds setup")]
-    partial class Changedfundssetup
+    [Migration("20210107212923_re-init post packages and nuke")]
+    partial class reinitpostpackagesandnuke
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("DoinGood.Models.Address", b =>
                 {
                     b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Lat")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Lng")
-                        .HasColumnType("int");
 
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
@@ -56,7 +50,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("CatalystId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
@@ -85,6 +79,12 @@ namespace DoinGood.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Lng")
+                        .HasColumnType("float");
+
                     b.Property<int>("TaskCompletedCount")
                         .HasColumnType("int");
 
@@ -105,7 +105,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("ChallengeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("ChallengeCatalystId")
                         .HasColumnType("int");
@@ -144,7 +144,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("DeedId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Beneficence")
                         .HasColumnType("nvarchar(max)");
@@ -184,7 +184,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("DonationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
@@ -228,7 +228,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("FundId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("CurrentFunds")
                         .HasColumnType("int");
@@ -242,6 +242,15 @@ namespace DoinGood.Migrations
                     b.HasKey("FundId");
 
                     b.ToTable("Fund");
+
+                    b.HasData(
+                        new
+                        {
+                            FundId = 1,
+                            CurrentFunds = 0,
+                            FundName = "Inspired Fund",
+                            NumberOfDonations = 0
+                        });
                 });
 
             modelBuilder.Entity("DoinGood.Models.Tasks", b =>
@@ -249,7 +258,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("FundId")
                         .HasColumnType("int");
@@ -293,18 +302,18 @@ namespace DoinGood.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
+                        .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
@@ -312,15 +321,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2d3d98e3-93a8-4c81-8277-85c3840bb2c8",
-                            ConcurrencyStamp = "0e8364e8-53b6-455f-85cd-51d62b69077f",
+                            Id = "84cad964-8609-4d0c-81bd-d68080ab52ee",
+                            ConcurrencyStamp = "3d655a77-c72a-48d2-b8dd-11d7702ec1c0",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "991d9ff7-6e7a-44bd-8a85-f06a523633d5",
-                            ConcurrencyStamp = "ed75868e-2409-4e35-8ab7-dd6f0d9d6641",
+                            Id = "b5743f4b-f0ea-4f69-a77f-2926c839b5f2",
+                            ConcurrencyStamp = "635e24b3-5646-46ea-b3a4-389b49f07945",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -331,7 +340,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -363,8 +372,8 @@ namespace DoinGood.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -376,12 +385,12 @@ namespace DoinGood.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -399,17 +408,17 @@ namespace DoinGood.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
+                        .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
+                        .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
@@ -420,7 +429,7 @@ namespace DoinGood.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -506,6 +515,10 @@ namespace DoinGood.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("IdentityUser");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Challenge", b =>
@@ -523,6 +536,12 @@ namespace DoinGood.Migrations
                         .HasForeignKey("FundId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ChallengeCatalyst");
+
+                    b.Navigation("DeedCatalyst");
+
+                    b.Navigation("Fund");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Deed", b =>
@@ -538,6 +557,10 @@ namespace DoinGood.Migrations
                         .HasForeignKey("FundId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Catalyst");
+
+                    b.Navigation("Fund");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Donate", b =>
@@ -561,6 +584,14 @@ namespace DoinGood.Migrations
                     b.HasOne("DoinGood.Models.Catalyst", "PosterCatalyst")
                         .WithMany()
                         .HasForeignKey("PosterCatalystId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("DonorCatalyst");
+
+                    b.Navigation("Fund");
+
+                    b.Navigation("PosterCatalyst");
                 });
 
             modelBuilder.Entity("DoinGood.Models.Tasks", b =>
@@ -578,6 +609,12 @@ namespace DoinGood.Migrations
                     b.HasOne("DoinGood.Models.Catalyst", "TaskerCatalyst")
                         .WithMany()
                         .HasForeignKey("TaskerCatalystId");
+
+                    b.Navigation("Fund");
+
+                    b.Navigation("PosterCatalyst");
+
+                    b.Navigation("TaskerCatalyst");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
