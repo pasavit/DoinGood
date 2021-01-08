@@ -19,14 +19,9 @@
                 <input asp-for="FundId" class="form-control" />
                 <span asp-validation-for="FundId" class="text-danger"></span>
             </div>*@
-        <div class="form-group">
-            <label asp-for="FundId">SELECT A CAUSE TO SUPPORT</label>
-            <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
-            <span asp-validation-for="FundId" class="text-danger"></span>
-        </div>
             <div class="form-group">
                 <label asp-for="Beneficence" class="control-label">ACT THAT MADE <em>YOU</em> FEEL GOOD?</label>
-                <input asp-for="Beneficence" class="form-control" placeholder="BENEFICENCE"/>
+                <input asp-for="Beneficence" class="form-control" placeholder="Today I..."/>
                 <span asp-validation-for="Beneficence" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,13 +30,18 @@
                 <span asp-validation-for="Impact" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DonateAmount" class="control-label">DONATION AMOUNT</label>
-                <input asp-for="DonateAmount" class="form-control" placeholder="PER CHALLENGE ACCEPTED"/>
+                <label asp-for="FundId">SELECT A CAUSE TO SUPPORT</label>
+                <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
+                <span asp-validation-for="FundId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonateAmount" class="control-label">DONATION AMOUNT<sup>*per challenge accepted</sup></label>
+                <input asp-for="DonateAmount" class="form-control" />
                 <span asp-validation-for="DonateAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaxAmount" class="control-label">DONATION MAX</label>
-                <input asp-for="MaxAmount" class="form-control" placeholder="UP TO AMOUNT"/>
+                <label asp-for="MaxAmount" class="control-label">DONATION MAX<sup>*up to</sup></label>
+                <input asp-for="MaxAmount" class="form-control" />
                 <span asp-validation-for="MaxAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
