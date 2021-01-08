@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.PosterCatalyst.Address)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PosterCatalyst)
             </th>
             <th>
@@ -36,6 +39,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PosterCatalyst.Address.Zip)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PosterCatalyst.FirstName)
             </td>
