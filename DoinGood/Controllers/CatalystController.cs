@@ -21,8 +21,7 @@ namespace DoinGood.Controllers
         }
         public ActionResult CatalystIndex()
         {
-            var identityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var catalyst = _repo.Catalyst.GetCatalyst(identityUserId);
+            var catalyst = _repo.Catalyst.GetCatalyst(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (catalyst == null)
             {
                 return RedirectToAction("CatalystCreate");
@@ -107,7 +106,7 @@ namespace DoinGood.Controllers
         /////////////////////////////////////////////////////////////////
         public ActionResult DeedIndex()
         {
-            var deedList = _repo.Deed.FindAll().ToList();
+            var deedList = _repo.Deed.DeedList();
             return View(deedList);
         }
 
@@ -128,16 +127,10 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeedCreate(Deed deed)
         {
-            try
-            {
-                _repo.Deed.Create(deed);
-                _repo.Save();
-                return RedirectToAction("DeedIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            deed.CatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            _repo.Deed.Create(deed);
+            _repo.Save();
+            return RedirectToAction("DeedIndex");
         }
         public ActionResult DeedEdit(int id)
         {

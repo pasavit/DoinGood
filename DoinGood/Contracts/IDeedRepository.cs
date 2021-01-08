@@ -9,5 +9,7 @@ namespace DoinGood.Contracts
     public interface IDeedRepository : IRepositoryBase<Deed>
     {
         Deed GetDeedDetails(int id);
+
+        public List<Deed> DeedList();
     }
 }
