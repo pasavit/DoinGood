@@ -4,9 +4,8 @@
     ViewData["Title"] = "CreateDeed";
 }
 
-<h1>CreateDeed</h1>
-
-<h4>Deed</h4>
+<h2>BENEFICENCE - <em>be·​nef·​i·​cence</em></h2>
+<h6><i>is defined as an act of charity, mercy, and kindness with a strong connotation of doing good to others</i></h6>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -21,29 +20,28 @@
                 <span asp-validation-for="FundId" class="text-danger"></span>
             </div>*@
         <div class="form-group">
-            <label asp-for="FundId"></label>
+            <label asp-for="FundId">SELECT A CAUSE TO SUPPORT</label>
             <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
-            @*@Html.DropDownList("Items", ViewBag.fundList as SelectList, "Select Fund", new { @class = "form-control" })*@
             <span asp-validation-for="FundId" class="text-danger"></span>
         </div>
             <div class="form-group">
-                <label asp-for="Beneficence" class="control-label"></label>
-                <input asp-for="Beneficence" class="form-control" />
+                <label asp-for="Beneficence" class="control-label">ACT THAT MADE <em>YOU</em> FEEL GOOD?</label>
+                <input asp-for="Beneficence" class="form-control" placeholder="BENEFICENCE"/>
                 <span asp-validation-for="Beneficence" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Impact" class="control-label"></label>
-                <input asp-for="Impact" class="form-control" />
+                <label asp-for="Impact" class="control-label">HOW HAS YOUR ACTION IMPACTED SOMEONE ELSE?</label>
+                <input asp-for="Impact" class="form-control" placeholder="IMPACT"/>
                 <span asp-validation-for="Impact" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DonateAmount" class="control-label"></label>
-                <input asp-for="DonateAmount" class="form-control" />
+                <label asp-for="DonateAmount" class="control-label">DONATION AMOUNT</label>
+                <input asp-for="DonateAmount" class="form-control" placeholder="PER CHALLENGE ACCEPTED"/>
                 <span asp-validation-for="DonateAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MaxAmount" class="control-label"></label>
-                <input asp-for="MaxAmount" class="form-control" />
+                <label asp-for="MaxAmount" class="control-label">DONATION MAX</label>
+                <input asp-for="MaxAmount" class="form-control" placeholder="UP TO AMOUNT"/>
                 <span asp-validation-for="MaxAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
