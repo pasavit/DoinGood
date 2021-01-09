@@ -35,5 +35,13 @@ namespace DoinGood.Models
         public bool PosterComplete { get; set; } = false;
 
         public bool TaskerComplete { get; set; } = false;
+
+        public int PosterValue { get; set; }
+
+        public int TaskerValue { get; set; }
+
+        [ForeignKey("TaskerFund")]
+        public int? TaskerFundId { get; set; }
+        public Fund TaskerFund { get; set; }
     }
 }

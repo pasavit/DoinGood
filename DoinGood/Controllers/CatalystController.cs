@@ -250,13 +250,31 @@ namespace DoinGood.Controllers
             _repo.Save();
             return View(tasks);
         }
-        public ActionResult TasksCompletedPoster(int id)
+        public ActionResult TasksCompleted(int id)
         {
+            ViewBag.fundList = _repo.Fund.FundList();
             var tasks = _repo.Tasks.GetTasksDetails(id);
-            tasks.TaskerCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
-            _repo.Tasks.Update(tasks);
-            _repo.Save();
             return View(tasks);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TasksCompleted(Tasks tasks, int posterValue, int taskerValue)
+        {
+            var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            if (user == tasks.PosterCatalystId)
+            {
+                _repo.Tasks.PosterComplete(tasks, posterValue, taskerValue);
+            }
+            else
+            {
+                _repo.Tasks.TaskerComplete(tasks, posterValue, taskerValue);
+            }
+            _repo.Tasks.Update(tasks);
+            _repo.Catalyst.Update(tasks.PosterCatalyst);
+            _repo.Fund.Update(tasks.Fund);
+            _repo.Fund.Update(tasks.TaskerFund);
+            _repo.Save();
+            return RedirectToAction("TasksIndex");
         }
     }
 }
