@@ -10,46 +10,67 @@
     <h4>Details</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Task Posters Name:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PosterCatalyst.FirstName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            Email:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosterCatalyst.EmailAddress)
+        </dd>
+        <dt class="col-sm-2">
+            Address:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.StreetAddress),
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.City),
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.State),
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.Zip)
+        </dd>
+        <dt class="col-sm-2">
             Accepted By:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TaskerCatalyst.FirstName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            Email:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TaskerCatalyst.EmailAddress)
+        </dd>
+        <dt class="col-sm-2">
             Posters Selected Fund:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Fund.FundName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Task:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TaskTitle)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Description:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TaskDescription)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Task Value:
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Value)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Image)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Image)
         </dd>
     </dl>

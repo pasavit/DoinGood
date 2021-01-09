@@ -251,14 +251,5 @@ namespace DoinGood.Controllers
             return View(tasks);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult TasksAccept(Tasks tasks)
-        //{
-        //    tasks.TaskerCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
-        //    _repo.Tasks.Update(tasks);
-        //    _repo.Save();
-        //    return RedirectToAction("TasksIndex");
-        //}
     }
 }
