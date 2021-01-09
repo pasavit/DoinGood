@@ -46,18 +46,11 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CatalystCreate(Catalyst catalyst)
         {
-            try
-            {
-                catalyst.IdentityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                catalyst = _repo.Catalyst.GeoCode(catalyst);
-                _repo.Catalyst.Create(catalyst);
-                _repo.Save();
-                return RedirectToAction("CatalystIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            catalyst.IdentityUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            catalyst = _repo.Catalyst.GeoCode(catalyst);
+            _repo.Catalyst.Create(catalyst);
+            _repo.Save();
+            return RedirectToAction("CatalystIndex");
         }
 
         public ActionResult CatalystEdit(int id)
@@ -70,17 +63,10 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CatalystEdit(Catalyst catalyst)
         {
-            try
-            {
-                catalyst = _repo.Catalyst.GeoCode(catalyst);
-                _repo.Catalyst.Update(catalyst);
-                _repo.Save();
-                return RedirectToAction("CatalystIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            catalyst = _repo.Catalyst.GeoCode(catalyst);
+            _repo.Catalyst.Update(catalyst);
+            _repo.Save();
+            return RedirectToAction("CatalystIndex");
         }
 
         public ActionResult Delete(int id)
@@ -143,16 +129,9 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeedEdit(Deed deed)
         {
-            try
-            {
-                _repo.Deed.Update(deed);
-                _repo.Save();
-                return RedirectToAction("DeedIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            _repo.Deed.Update(deed);
+            _repo.Save();
+            return RedirectToAction("DeedIndex");
         }
         /////////////////////////////////////////////////////////////////
         /// Challenge
@@ -167,16 +146,9 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChallengeCreate(Deed deed)
         {
-            try
-            {
-                _repo.Deed.Create(deed);
-                _repo.Save();
-                return RedirectToAction("DeedIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            _repo.Deed.Create(deed);
+            _repo.Save();
+            return RedirectToAction("DeedIndex");
         }
         /////////////////////////////////////////////////////////////////
         /// Donate
@@ -220,16 +192,9 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DonateEdit(Donate donate)
         {
-            try
-            {
-                _repo.Donate.Update(donate);
-                _repo.Save();
-                return RedirectToAction("DonateIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            _repo.Donate.Update(donate);
+            _repo.Save();
+            return RedirectToAction("DonateIndex");
         }
         /////////////////////////////////////////////////////////////////
         /// Task
@@ -273,16 +238,27 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TasksEdit(Tasks tasks)
         {
-            try
-            {
-                _repo.Tasks.Update(tasks);
-                _repo.Save();
-                return RedirectToAction("TasksIndex");
-            }
-            catch
-            {
-                return View();
-            }
+            _repo.Tasks.Update(tasks);
+            _repo.Save();
+            return RedirectToAction("TasksIndex");
         }
+        public ActionResult TasksAccept(int id)
+        {
+            var tasks = _repo.Tasks.GetTasksDetails(id);
+            tasks.TaskerCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            _repo.Tasks.Update(tasks);
+            _repo.Save();
+            return View(tasks);
+        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult TasksAccept(Tasks tasks)
+        //{
+        //    tasks.TaskerCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+        //    _repo.Tasks.Update(tasks);
+        //    _repo.Save();
+        //    return RedirectToAction("TasksIndex");
+        //}
     }
 }
