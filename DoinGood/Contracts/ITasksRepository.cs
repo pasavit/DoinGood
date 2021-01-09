@@ -12,9 +12,9 @@ namespace DoinGood.Contracts
 
         public List<Tasks> TasksList();
 
-        public Tasks PosterComplete(Tasks task, int posterValue, int taskerValue);
+        public Tasks PosterComplete(Tasks task, int taskerValue);
 
-        public Tasks TaskerComplete(Tasks task, int posterValue, int taskerValue);
+        public Tasks TaskerComplete(Tasks task, int taskerValue);
 
     }
 }

@@ -36,7 +36,7 @@ namespace DoinGood.Models
 
         public bool TaskerComplete { get; set; } = false;
 
-        public int PosterValue { get; set; }
+        public int PosterValue { get; set; } //May  not need
 
         public int TaskerValue { get; set; }
 

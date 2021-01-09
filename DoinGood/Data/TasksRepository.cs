@@ -21,21 +21,23 @@ namespace DoinGood.Data
             return tasksList;
         }
 
-        public Tasks PosterComplete(Tasks task, int posterValue, int taskerValue)
+        public Tasks PosterComplete(Tasks task, int taskerValue)
         {
             task.PosterComplete = true;
+            var posterValue = task.Value - taskerValue;
             if(task.PosterComplete && task.TaskerComplete == true)
             {
                 task.PosterCatalyst.AccountBalance += task.Value;
                 task.Fund.CurrentFunds += posterValue;
-                task.TaskerFund.CurrentFunds = +taskerValue;
+                task.TaskerFund.CurrentFunds += taskerValue;
             }
             return task;
         }
-        public Tasks TaskerComplete(Tasks task, int posterValue, int taskerValue)
+        public Tasks TaskerComplete(Tasks task, int taskerValue)
         {
             task.TaskerComplete = true;
-            if(task.PosterComplete && task.TaskerComplete == true)
+            var posterValue = task.Value - taskerValue;
+            if (task.PosterComplete && task.TaskerComplete == true)
             {
                 task.PosterCatalyst.AccountBalance += task.Value;
                 task.Fund.CurrentFunds += posterValue;

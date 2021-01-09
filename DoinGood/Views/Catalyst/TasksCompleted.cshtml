@@ -1,0 +1,125 @@
+﻿@model DoinGood.Models.Tasks
+
+@{
+    ViewData["Title"] = "TasksCompleted";
+}
+
+<h1>TasksCompleted</h1>
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Task Posters Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosterCatalyst.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Email:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosterCatalyst.EmailAddress)
+        </dd>
+        <dt class="col-sm-2">
+            Address:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.StreetAddress),
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.City),
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.State),
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.Zip)
+        </dd>
+        <dt class="col-sm-2">
+            Accepted By:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TaskerCatalyst.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Email:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TaskerCatalyst.EmailAddress)
+        </dd>
+        <dt class="col-sm-2">
+            Posters Selected Fund:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fund.FundName)
+        </dd>
+        <dt class="col-sm-2">
+            Task:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TaskTitle)
+        </dd>
+        <dt class="col-sm-2">
+            Description:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TaskDescription)
+        </dd>
+        <dt class="col-sm-2">
+            Task Value:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Value)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class="col-sm-2">
+            Poster Marked Task Completed
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosterComplete)
+        </dd>
+        <dt class="col-sm-2">
+            Tasker Marked Task Completed
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TaskerComplete)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="TasksEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TaskId" />
+            <input type="hidden" asp-for="PosterCatalystId" />
+            <input type="hidden" asp-for="PosterCatalystId" />
+            <input type="hidden" asp-for="TaskTitle" />
+            <input type="hidden" asp-for="TaskDescription" />
+            <input type="hidden" asp-for="Value" />
+            <input type="hidden" asp-for="Image" />
+            <div class="form-group">
+                <label asp-for="TaskerValue" class="control-label">VALUE<sup> *to be donated</sup></label>
+                <input asp-for="TaskerValue" class="form-control" />
+                <span asp-validation-for="TaskerValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskerFundId">SELECT YOUR OWN CAUSE TO SUPPORT</label>
+                <select asp-for="TaskerFundId" class="form-control" asp-items="ViewBag.fundList"></select>
+                <span asp-validation-for="TaskerFundId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FundId">POSTER SELECTED CAUSE</label>
+                <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
+                <span asp-validation-for="FundId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.TaskId">Edit</a> |*@
+    <a asp-action="TasksIndex">Back to List</a>
+</div>

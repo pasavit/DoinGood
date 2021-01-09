@@ -258,16 +258,16 @@ namespace DoinGood.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TasksCompleted(Tasks tasks, int posterValue, int taskerValue)
+        public ActionResult TasksCompleted(Tasks tasks, int taskerValue)
         {
             var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
             if (user == tasks.PosterCatalystId)
             {
-                _repo.Tasks.PosterComplete(tasks, posterValue, taskerValue);
+                _repo.Tasks.PosterComplete(tasks, taskerValue);
             }
             else
             {
-                _repo.Tasks.TaskerComplete(tasks, posterValue, taskerValue);
+                _repo.Tasks.TaskerComplete(tasks, taskerValue);
             }
             _repo.Tasks.Update(tasks);
             _repo.Catalyst.Update(tasks.PosterCatalyst);
