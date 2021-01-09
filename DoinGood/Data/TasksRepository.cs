@@ -20,5 +20,24 @@ namespace DoinGood.Data
             var tasksList = FindAll().Include(e => e.Fund).Include(e => e.PosterCatalyst).Include(e => e.PosterCatalyst.Address).ToList();
             return tasksList;
         }
+
+        public void PosterComplete(int id)
+        {
+            var task = GetTasksDetails(id);
+            task.PosterComplete = true;
+            if(task.PosterComplete && task.TaskerComplete == true)
+            {
+                task.PosterCatalyst.AccountBalance += task.Value;
+            }
+        }
+        public void TaskerComplete(int id)
+        {
+            var task = GetTasksDetails(id);
+            task.TaskerComplete = true;
+            if(task.PosterComplete && task.TaskerComplete == true)
+            {
+                task.PosterCatalyst.AccountBalance += task.Value;
+            }
+        }
     }
 }

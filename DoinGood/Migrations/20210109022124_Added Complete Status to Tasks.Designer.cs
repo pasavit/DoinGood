@@ -4,14 +4,16 @@ using DoinGood.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DoinGood.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210109022124_Added Complete Status to Tasks")]
+    partial class AddedCompleteStatustoTasks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,9 +51,6 @@ namespace DoinGood.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<double>("AccountBalance")
-                        .HasColumnType("float");
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
@@ -399,15 +398,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c2d08bc2-b3e9-44da-b88b-c3aa2f22e5c5",
-                            ConcurrencyStamp = "250c07d9-986a-42ee-8d9d-d1be74d43bfd",
+                            Id = "8089f6dc-5cc9-45af-864e-c0f50c4d82d0",
+                            ConcurrencyStamp = "2152a6e6-41ee-42a3-8f3a-b5696ad3d108",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "a73003ae-f386-4351-ad58-246cebc08a23",
-                            ConcurrencyStamp = "c6b0de75-4741-4786-b6b8-4981665a735b",
+                            Id = "13181694-4ecf-49cb-a5d5-a7f38a19cc43",
+                            ConcurrencyStamp = "2155e08d-fb8a-487f-a886-c5290be6e2ea",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

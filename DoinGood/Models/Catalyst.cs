@@ -42,5 +42,7 @@ namespace DoinGood.Models
         public double Lat { get; set; }
 
         public double Lng { get; set; }
+
+        public int AccountBalance { get; set; }
     }
 }

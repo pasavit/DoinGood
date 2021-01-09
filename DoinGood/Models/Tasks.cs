@@ -30,6 +30,10 @@ namespace DoinGood.Models
 
         public int Value { get; set; }
 
-        public string Image { get; set; } 
+        public string Image { get; set; }
+
+        public bool PosterComplete { get; set; } = false;
+
+        public bool TaskerComplete { get; set; } = false;
     }
 }

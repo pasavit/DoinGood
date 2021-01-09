@@ -250,6 +250,13 @@ namespace DoinGood.Controllers
             _repo.Save();
             return View(tasks);
         }
-
+        public ActionResult TasksCompletedPoster(int id)
+        {
+            var tasks = _repo.Tasks.GetTasksDetails(id);
+            tasks.TaskerCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            _repo.Tasks.Update(tasks);
+            _repo.Save();
+            return View(tasks);
+        }
     }
 }
