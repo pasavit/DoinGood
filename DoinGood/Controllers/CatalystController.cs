@@ -245,7 +245,11 @@ namespace DoinGood.Controllers
         public ActionResult TasksAccept(int id)
         {
             var tasks = _repo.Tasks.GetTasksDetails(id);
-            tasks.TaskerCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            if (user != tasks.PosterCatalystId)
+            {
+                tasks.TaskerCatalystId = user;
+            }
             _repo.Tasks.Update(tasks);
             _repo.Save();
             return View(tasks);
@@ -261,18 +265,16 @@ namespace DoinGood.Controllers
         public ActionResult TasksCompleted(Tasks tasks, int taskerValue)
         {
             var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
-            if (user == tasks.PosterCatalystId)
+            var completedTasks = _repo.Tasks.GetTasksDetails(tasks.TaskId);
+            if (user == completedTasks.PosterCatalystId)
             {
-                _repo.Tasks.PosterComplete(tasks, taskerValue);
+                _repo.Tasks.PosterComplete(completedTasks, taskerValue);
             }
             else
             {
-                _repo.Tasks.TaskerComplete(tasks, taskerValue);
+                _repo.Tasks.TaskerComplete(completedTasks, taskerValue);
             }
-            _repo.Tasks.Update(tasks);
-            _repo.Catalyst.Update(tasks.PosterCatalyst);
-            _repo.Fund.Update(tasks.Fund);
-            _repo.Fund.Update(tasks.TaskerFund);
+            _repo.Tasks.Update(completedTasks);
             _repo.Save();
             return RedirectToAction("TasksIndex");
         }
