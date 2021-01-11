@@ -116,7 +116,10 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeedCreate(Deed deed)
         {
-            deed.CatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            deed.CatalystId = user;
+            _repo.Catalyst.CreationFee(user);
+            _repo.Fund.InspiredFund();
             _repo.Deed.Create(deed);
             _repo.Save();
             return RedirectToAction("DeedIndex");
