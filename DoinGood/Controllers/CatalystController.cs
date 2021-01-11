@@ -14,12 +14,10 @@ namespace DoinGood.Controllers
     public class CatalystController : Controller
     {
         private IRepositoryWrapper _repo;
-        //private int inspiredFund;
 
         public CatalystController(IRepositoryWrapper repo)
         {
             _repo = repo;
-            //inspiredFund = _repo.Fund.InspiredFund().CurrentFunds;
         }
         public ActionResult CatalystIndex()
         {

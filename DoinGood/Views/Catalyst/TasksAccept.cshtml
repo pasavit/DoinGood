@@ -75,32 +75,6 @@
         </dd>
     </dl>
 </div>
-@*<div class="row">
-    <div class="col-md-4">
-        <form asp-action="TasksCompleted">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Fund" />
-            <input type="hidden" asp-for="FundId" />
-            <input type="hidden" asp-for="TaskId" />
-            <input type="hidden" asp-for="PosterCatalyst" />
-            <input type="hidden" asp-for="PosterCatalystId" />
-            <input type="hidden" asp-for="PosterComplete" />
-            <input type="hidden" asp-for="TaskerCatalyst" />
-            <input type="hidden" asp-for="TaskerCatalystId" />
-            <input type="hidden" asp-for="TaskerComplete" />
-            <input type="hidden" asp-for="TaskerFund" />
-            <input type="hidden" asp-for="TaskerFundId" />
-            <input type="hidden" asp-for="TaskerValue" />
-            <input type="hidden" asp-for="TaskTitle" />
-            <input type="hidden" asp-for="TaskDescription" />
-            <input type="hidden" asp-for="Value" />
-            <input type="hidden" asp-for="Image" />
-            <div class="form-group">
-                <input type="submit" value="Task Completed" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>*@
         <div>
             <a asp-action="TasksCompleted" asp-route-id="@Model.TaskId">Task Complete</a> |
             <a asp-action="TasksIndex">Back to List</a>
