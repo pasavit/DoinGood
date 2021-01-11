@@ -29,5 +29,14 @@ namespace DoinGood.Data
             deed.InspireCount++;
             Update(deed);
         }
+
+        public Deed DirectDonate(Deed deed, Catalyst catalyst, int amount)
+        {
+            var deedInDb = GetDeedDetails(deed.DeedId);
+            deedInDb.Fund.CurrentFunds += amount;
+            catalyst.AccountBalance += amount;
+            Update(deedInDb);
+            return deedInDb;
+        }
     }
 }

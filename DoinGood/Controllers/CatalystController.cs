@@ -147,6 +147,21 @@ namespace DoinGood.Controllers
             _repo.Save();
             return RedirectToAction("DeedIndex");
         }
+
+        public ActionResult DeedDonate(int id)
+        {
+            var deed = _repo.Deed.GetDeedDetails(id);
+            return View(deed);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeedDonate(Deed deed, int DonateAmount)
+        {
+            var catalyst = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            _repo.Deed.DirectDonate(deed, catalyst, DonateAmount);
+            _repo.Save();
+            return RedirectToAction("DeedIndex");
+        }
         /////////////////////////////////////////////////////////////////
         /// Challenge
         /////////////////////////////////////////////////////////////////

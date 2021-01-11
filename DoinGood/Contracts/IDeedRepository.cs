@@ -14,5 +14,7 @@ namespace DoinGood.Contracts
 
         public void Inspired(Deed deed);
 
+        public Deed DirectDonate(Deed deed, Catalyst catalyst, int amount);
+
     }
 }
