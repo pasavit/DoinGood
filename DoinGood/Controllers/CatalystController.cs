@@ -298,14 +298,7 @@ namespace DoinGood.Controllers
         {
             var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
             var taskerFund = _repo.Fund.GetFund(TaskerFundId);
-            if (user == tasks.PosterCatalystId)
-            {
-                _repo.Tasks.PosterComplete(tasks, taskerValue);
-            }
-            else
-            {
-                _repo.Tasks.TaskerComplete(tasks, taskerValue, taskerFund);
-            }
+            _repo.Tasks.TaskComplete(tasks, taskerValue, taskerFund, user);
             _repo.Save();
             return RedirectToAction("TasksIndex");
         }

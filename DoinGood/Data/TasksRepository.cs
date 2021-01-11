@@ -20,34 +20,24 @@ namespace DoinGood.Data
             var tasksList = FindAll().Include(e => e.Fund).Include(e => e.PosterCatalyst).Include(e => e.PosterCatalyst.Address).ToList();
             return tasksList;
         }
-
-        public Tasks PosterComplete(Tasks task, int taskerValue)
-        {
-            task.PosterComplete = true;
-            var posterValue = task.Value - taskerValue;
-            if(task.PosterComplete && task.TaskerComplete == true)
-            {
-                task.PosterCatalyst.AccountBalance += task.Value;
-                task.Fund.CurrentFunds += posterValue;
-                task.Fund.NumberOfDonations++;
-                task.TaskerFund.CurrentFunds += taskerValue;
-                if(taskerValue != 0)
-                {
-                    task.TaskerFund.NumberOfDonations++;
-                }
-            }
-            return task;
-        }
-        public Tasks TaskerComplete(Tasks task, int taskerValue, Fund taskerFund)
+        public Tasks TaskComplete(Tasks task, int taskerValue, Fund taskerFund, int user)
         {
             var taskInDb = GetTasksDetails(task.TaskId);
+            if (user == taskInDb.PosterCatalystId)
+            {
+                taskInDb.PosterComplete = true;
+            }
+            else
+            {
+                taskInDb.TaskerComplete = true;
+            }
             taskInDb.TaskerFund = taskerFund;
-            taskInDb.TaskerComplete = true;
             var posterValue = taskInDb.Value - taskerValue;
             if (taskInDb.PosterComplete && taskInDb.TaskerComplete == true)
             {
                 taskInDb.PosterCatalyst.AccountBalance += taskInDb.Value;
                 taskInDb.Fund.CurrentFunds += posterValue;
+                taskInDb.Fund.NumberOfDonations++;
                 taskInDb.TaskerFund.CurrentFunds += taskerValue;
                 if (taskerValue != 0)
                 {
@@ -57,5 +47,6 @@ namespace DoinGood.Data
             Update(taskInDb);
             return taskInDb;
         }
+        
     }
 }
