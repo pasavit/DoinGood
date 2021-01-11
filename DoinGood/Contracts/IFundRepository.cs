@@ -10,7 +10,6 @@ namespace DoinGood.Contracts
     public interface IFundRepository : IRepositoryBase<Fund>
     {
         public SelectList FundList();
-        public Fund InspiredFund();
-
+        public void InspiredFund();
     }
 }
