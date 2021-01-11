@@ -12,5 +12,16 @@ namespace DoinGood.Data
         public ChallengeRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
         }
+
+        public Deed DeedChallengeModdifier(Deed deed, Catalyst catalyst)
+        {
+            deed.ChallengeCount++;
+            if (deed.ChallengeCount * deed.DonateAmount <= deed.MaxAmount)
+            {
+                catalyst.AccountBalance += deed.DonateAmount;
+                deed.Fund.CurrentFunds += deed.DonateAmount;
+            }
+            return deed;
+        }
     }
 }

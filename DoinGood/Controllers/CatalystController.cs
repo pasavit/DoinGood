@@ -142,16 +142,25 @@ namespace DoinGood.Controllers
         /////////////////////////////////////////////////////////////////
         /// Challenge
         /////////////////////////////////////////////////////////////////
-        public ActionResult ChallengeCreate()
+        public ActionResult ChallengeCreate(int id)
         {
-            Deed deed = new Deed();
-            return View(deed);
+            ViewBag.fundList = _repo.Fund.FundList();
+            var originalDeed = _repo.Deed.GetDeedDetails(id);
+            var originalCatalyst = _repo.Catalyst.GetCatalystDetails(originalDeed.CatalystId);
+            _repo.Challenge.DeedChallengeModdifier(originalDeed, originalCatalyst);
+            _repo.Deed.Update(originalDeed);
+            _repo.Save();
+            return View(originalDeed);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChallengeCreate(Deed deed)
         {
+            var catalyst = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            deed.CatalystId = catalyst.CatalystId;
+            _repo.Catalyst.CreationFee(deed.CatalystId);
+            _repo.Fund.InspiredFund();
             _repo.Deed.Create(deed);
             _repo.Save();
             return RedirectToAction("DeedIndex");

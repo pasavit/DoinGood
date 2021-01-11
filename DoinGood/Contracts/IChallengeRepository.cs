@@ -8,5 +8,6 @@ namespace DoinGood.Contracts
 {
     public interface IChallengeRepository : IRepositoryBase<Challenge>
     {
+        public Deed DeedChallengeModdifier(Deed deed, Catalyst catalyst);
     }
 }
