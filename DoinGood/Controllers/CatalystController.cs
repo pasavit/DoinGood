@@ -139,6 +139,14 @@ namespace DoinGood.Controllers
             _repo.Save();
             return RedirectToAction("DeedIndex");
         }
+
+        public ActionResult DeedInspired(int id)
+        {
+            var deed = _repo.Deed.GetDeedDetails(id);
+            _repo.Deed.Inspired(deed);
+            _repo.Save();
+            return RedirectToAction("DeedIndex");
+        }
         /////////////////////////////////////////////////////////////////
         /// Challenge
         /////////////////////////////////////////////////////////////////

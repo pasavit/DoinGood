@@ -11,5 +11,8 @@ namespace DoinGood.Contracts
         Deed GetDeedDetails(int id);
 
         public List<Deed> DeedList();
+
+        public void Inspired(Deed deed);
+
     }
 }

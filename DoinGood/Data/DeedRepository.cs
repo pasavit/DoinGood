@@ -23,5 +23,11 @@ namespace DoinGood.Data
             var deedList = FindAll().Include(e => e.Fund).Include(e => e.Catalyst).ToList();
             return deedList;
         }
+
+        public void Inspired(Deed deed)
+        {
+            deed.InspireCount++;
+            Update(deed);
+        }
     }
 }
