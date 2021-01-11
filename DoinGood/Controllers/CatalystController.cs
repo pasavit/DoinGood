@@ -257,16 +257,7 @@ namespace DoinGood.Controllers
             _repo.Save();
             return RedirectToAction("TasksIndex");
         }
-        //public ActionResult TasksCreate(Tasks tasks)
-        //{
-        //    var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
-        //    tasks.PosterCatalyst = _repo.Catalyst.GetCatalystDetails(user);
-        //    _repo.Tasks.Create(tasks);
-        //    _repo.Tasks.CreationFee(tasks);
-        //    _repo.Fund.InspiredFund();
-        //    _repo.Save();
-        //    return RedirectToAction("TasksIndex");
-        //}
+
         public ActionResult TasksEdit(int id)
         {
             ViewBag.fundList = _repo.Fund.FundList();
@@ -303,19 +294,18 @@ namespace DoinGood.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TasksCompleted(Tasks tasks, int taskerValue)
+        public ActionResult TasksCompleted(Tasks tasks, int taskerValue, int TaskerFundId)
         {
             var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
-            var taskInDb = _repo.Tasks.GetTasksDetails(tasks.TaskId);
-            if (user == taskInDb.PosterCatalystId)
+            var taskerFund = _repo.Fund.GetFund(TaskerFundId);
+            if (user == tasks.PosterCatalystId)
             {
-                _repo.Tasks.PosterComplete(taskInDb, taskerValue);
+                _repo.Tasks.PosterComplete(tasks, taskerValue);
             }
             else
             {
-                _repo.Tasks.TaskerComplete(taskInDb, taskerValue);
+                _repo.Tasks.TaskerComplete(tasks, taskerValue, taskerFund);
             }
-            _repo.Tasks.Update(taskInDb);
             _repo.Save();
             return RedirectToAction("TasksIndex");
         }

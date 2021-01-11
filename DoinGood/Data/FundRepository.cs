@@ -13,7 +13,7 @@ namespace DoinGood.Data
         public FundRepository(ApplicationDbContext applicationDbContext) : base(applicationDbContext)
         {
         }
-
+        public Fund GetFund(int id) => FindByCondition(e => e.FundId == id).FirstOrDefault();
         public SelectList FundList()
         {
             var fundList = new SelectList(FindAll(), "FundId", "FundName");

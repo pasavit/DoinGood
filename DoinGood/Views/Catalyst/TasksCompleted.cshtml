@@ -90,7 +90,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="TasksCompleted">
+        <form asp-action="TasksCompleted" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Fund" />
             <input type="hidden" asp-for="TaskId" />
@@ -104,6 +104,7 @@
             <input type="hidden" asp-for="TaskDescription" />
             <input type="hidden" asp-for="Value" />
             <input type="hidden" asp-for="Image" />
+            <input type="hidden" asp-for="TaskerFund" />
             <div class="form-group">
                 <label asp-for="TaskerValue" class="control-label">VALUE<sup> *to be donated</sup></label>
                 <input asp-for="TaskerValue" class="form-control" />

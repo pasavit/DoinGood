@@ -20,11 +20,6 @@ namespace DoinGood.Data
             var tasksList = FindAll().Include(e => e.Fund).Include(e => e.PosterCatalyst).Include(e => e.PosterCatalyst.Address).ToList();
             return tasksList;
         }
-        public Tasks CreationFee(Tasks task)
-        {
-            task.PosterCatalyst.AccountBalance++;
-            return task;
-        }
 
         public Tasks PosterComplete(Tasks task, int taskerValue)
         {
@@ -43,21 +38,24 @@ namespace DoinGood.Data
             }
             return task;
         }
-        public Tasks TaskerComplete(Tasks task, int taskerValue)
+        public Tasks TaskerComplete(Tasks task, int taskerValue, Fund taskerFund)
         {
-            task.TaskerComplete = true;
-            var posterValue = task.Value - taskerValue;
-            if (task.PosterComplete && task.TaskerComplete == true)
+            var taskInDb = GetTasksDetails(task.TaskId);
+            taskInDb.TaskerFund = taskerFund;
+            taskInDb.TaskerComplete = true;
+            var posterValue = taskInDb.Value - taskerValue;
+            if (taskInDb.PosterComplete && taskInDb.TaskerComplete == true)
             {
-                task.PosterCatalyst.AccountBalance += task.Value;
-                task.Fund.CurrentFunds += posterValue;
-                task.TaskerFund.CurrentFunds += taskerValue;
+                taskInDb.PosterCatalyst.AccountBalance += taskInDb.Value;
+                taskInDb.Fund.CurrentFunds += posterValue;
+                taskInDb.TaskerFund.CurrentFunds += taskerValue;
                 if (taskerValue != 0)
                 {
-                    task.TaskerFund.NumberOfDonations++;
+                    taskInDb.TaskerFund.NumberOfDonations++;
                 }
             }
-            return task;
+            Update(taskInDb);
+            return taskInDb;
         }
     }
 }
