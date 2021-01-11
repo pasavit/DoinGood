@@ -4,7 +4,7 @@
     ViewData["Title"] = "CatalystEdit";
 }
 
-<h1>CatalystEdit</h1>
+<h1>Edit</h1>
 
 <h4>Catalyst</h4>
 <hr />
@@ -24,37 +24,37 @@
             <input type="hidden" asp-for="Lat" />
             <input type="hidden" asp-for="Lng" />
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
+                <label asp-for="FirstName" class="control-label">First Name</label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
+                <label asp-for="LastName" class="control-label">Last Name</label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address.StreetAddress" class="control-label"></label>
+                <label asp-for="Address.StreetAddress" class="control-label">Street Address</label>
                 <input asp-for="Address.StreetAddress" class="form-control" />
                 <span asp-validation-for="Address.StreetAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address.City" class="control-label"></label>
+                <label asp-for="Address.City" class="control-label">City</label>
                 <input asp-for="Address.City" class="form-control" />
                 <span asp-validation-for="Address.City" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address.State" class="control-label"></label>
+                <label asp-for="Address.State" class="control-label">State</label>
                 <input asp-for="Address.State" class="form-control" />
                 <span asp-validation-for="Address.State" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Address.Zip" class="control-label"></label>
+                <label asp-for="Address.Zip" class="control-label">Zip</label>
                 <input asp-for="Address.Zip" class="form-control" />
                 <span asp-validation-for="Address.Zip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
+                <label asp-for="Image" class="control-label">Optional Image</label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>

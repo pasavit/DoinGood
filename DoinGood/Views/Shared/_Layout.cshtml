@@ -4,46 +4,297 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - DoinGood</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/lib/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/lib/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/lib/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/lib/venobox/venobox.css" rel="stylesheet">
+    <link href="~/lib/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet">
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DoinGood</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="container d-flex">
+
+            <div class="logo mr-auto">
+                <h1 class="text-light"><a href="/Catalyst/CatalystIndex">Do'Gooders</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a asp-controller="Home" asp-action="Index">HOME</a></li>
+                    <li><a asp-controller="Home" asp-action="Kindness">KINDNESS</a></li>
+                    <li><a asp-controller="Catalyst" asp-action="DeedIndex">DEEDS</a></li>
+                    <li><a asp-controller="Catalyst" asp-action="DonateIndex">DONATIONS</a></li>
+                    <li><a asp-controller="Catalyst" asp-action="TasksIndex">TASKS</a></li>
+                    <li><a asp-controller="Home" asp-action="Conttact">CONTACT</a></li>
+                    @*<li><a href="blog.html">Contact</a></li>*@
+                    <li class="drop-down">
+                        <a href="">User</a>
+                        <ul>
+                            <li><a asp-area="Identity" asp-page="/Account/Register">REGISTER</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Login">LOG IN</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+
+    </header><!-- End Header -->
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DoinGood</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+
+
+<main id="main">
+    @RenderBody()
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-9 text-center text-lg-left">
+                    <p> Doin’ Good takes “Do just one thing for another” to the next level. Users can Donate an item, post Tasks – help needed, or Deeds – actions, acts of kindness, helped someone, brightened someone’s day; literally anything that made yours or someone else’s heart fill with that feeling we all have experienced, Helpers’ High** . Users can then challenge others to spread the good! Sometimes a small deed can inspire a great chain of kindness.</p>
+                </div>
+                <div class="col-lg-3 cta-btn-container text-center">
+                    <a class="cta-btn align-middle" asp-controller="Catalyst" asp-action="DeedCreate">GET DOIN!</a>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - DoinGood - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    </section><!-- End Cta Section -->
+    <!-- ======= Services Section ======= -->
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="testimonial-item">
+                        <img src="/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                        <h3>Saul Goodman</h3>
+                        <h4>Veteran</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Kindness is choosing to acknowledge and celebrate the beauty in others, regardless of whether or no they can find it in themselves.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-item mt-4 mt-lg-0">
+                        <img src="/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                        <h3>Sara Wilsson</h3>
+                        <h4>Designer</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Kindness is the most important tool to spread love among humanity.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-item mt-4">
+                        <img src="/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                        <h3>Jena Karlis</h3>
+                        <h4>Business Owner</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Kindness is sharing the best parts of our hearts with those around us.
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-item mt-4">
+                        <img src="/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                        <h3>Matt Brandon</h3>
+                        <h4>Freelancer</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            If you can be anything, be kind!
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testimonial-item mt-4">
+                        <img src="/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                        <h3>John Larson</h3>
+                        <h4>Entrepreneur</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Kindness is the ability to know what the right thing to do is and having the courage to do it!
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="testimonial-item mt-4">
+                        <img src="/img/testimonials/testimonials-6.jpg" class="testimonial-img" alt="">
+                        <h3>Emily Harison</h3>
+                        <h4>Pet Owner</h4>
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            Kindness is love made visible
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>Doin'Good</h3>
+                        <p>
+                            7345 W. Warnimont Ave. <br>
+                            Milwaukee, WI 53220<br>
+                            United States <br><br>
+                            <strong>Email:</strong> pas@gmail.com<br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i><a asp-controller="Home" asp-action="Index">HOME</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a asp-controller="Home" asp-action="Kindness">KINDNESS</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a asp-controller="Catalyst" asp-action="DeedIndex">DEEDS</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a asp-controller="Catalyst" asp-action="DonateIndex">DONATIONS</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a asp-controller="Catalyst" asp-action="TasksIndex">TASKS</a></li>
+                            <li><i class="bx bx-chevron-right"></i><a asp-controller="Home" asp-action="Conttact">CONTACT</a></li>
+                        </ul>
+                    </div>
+
+                    @*<div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        </ul>
+                    </div>*@
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Join Our Newsletter</h4>
+                        <p>Like what you see? Sign up and spread the good!</p>
+                        <form action="" method="post">
+                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+
+            <div class="mr-md-auto text-center text-md-left">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Pas Productions</span></strong>. All Rights Reserved
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/lib/jquery-sticky/jquery.sticky.js"></script>
+    <script src="~/lib/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/lib/venobox/venobox.min.js"></script>
+    <script src="~/lib/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/lib/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/lib/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/js/main.js"></script>
     @RenderSection("Scripts", required: false)
+
 </body>
+
 </html>
+@*<div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - DoinGood - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
+    </html>*@

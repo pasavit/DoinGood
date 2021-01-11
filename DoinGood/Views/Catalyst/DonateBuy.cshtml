@@ -4,68 +4,59 @@
     ViewData["Title"] = "DonateBuy";
 }
 
-<h1>DonateBuy</h1>
+<h1>Purchase Donation</h1>
 
 <div>
     <h4>Donate</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PosterCatalyst)
+            Poster Catalyst:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PosterCatalyst.FirstName)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PosterCatalyst)
-        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PosterCatalyst.EmailAddress)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PosterCatalyst.Address)
-        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PosterCatalyst.Address.StreetAddress), @Html.DisplayFor(model => model.PosterCatalyst.Address.City), @Html.DisplayFor(model => model.PosterCatalyst.Address.State), @Html.DisplayFor(model => model.PosterCatalyst.Address.Zip)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DonorCatalyst)
+            Buying Catalyst:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DonorCatalyst.FirstName)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DonorCatalyst)
-        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DonorCatalyst.EmailAddress)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Fund)
+            Fund:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Fund.FundName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemName)
+            Item Name:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ItemName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemDescription)
+            Item Description:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ItemDescription)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Value)
+            Value:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Value)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
+            Image:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Image)

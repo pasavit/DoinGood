@@ -68,19 +68,19 @@
             @Html.DisplayFor(model => model.Value)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
+            Image:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Image)
         </dd>
         <dt class="col-sm-2">
-            Poster Marked Task Completed
+            Poster Marked Task Completed:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PosterComplete)
         </dd>
         <dt class="col-sm-2">
-            Tasker Marked Task Completed
+            Tasker Marked Task Completed:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TaskerComplete)
@@ -106,17 +106,17 @@
             <input type="hidden" asp-for="Image" />
             <input type="hidden" asp-for="TaskerFund" />
             <div class="form-group">
-                <label asp-for="TaskerValue" class="control-label">VALUE<sup> *to be donated</sup></label>
+                <label asp-for="TaskerValue" class="control-label">Value<sup> *to be donated</sup></label>
                 <input asp-for="TaskerValue" class="form-control" />
                 <span asp-validation-for="TaskerValue" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TaskerFundId">SELECT YOUR OWN CAUSE TO SUPPORT</label>
+                <label asp-for="TaskerFundId">Select your own cause to support</label>
                 <select asp-for="TaskerFundId" class="form-control" asp-items="ViewBag.fundList"></select>
                 <span asp-validation-for="TaskerFundId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FundId">POSTER SELECTED CAUSE</label>
+                <label asp-for="FundId">Posters selected cause</label>
                 <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
                 <span asp-validation-for="FundId" class="text-danger"></span>
             </div>

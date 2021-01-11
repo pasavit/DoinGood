@@ -4,7 +4,7 @@
     ViewData["Title"] = "TasksEdit";
 }
 
-<h1>TasksEdit</h1>
+<h1>Edit</h1>
 
 <h4>Tasks</h4>
 <hr />
@@ -25,27 +25,27 @@
             <input type="hidden" asp-for="TaskerFund" />
             <input type="hidden" asp-for="TaskerFundId" />
             <div class="form-group">
-                <label asp-for="TaskTitle" class="control-label">TASK YOU NEED COMPLETED</label>
-                <input asp-for="TaskTitle" class="form-control" placeholder="TASK NAME" />
+                <label asp-for="TaskTitle" class="control-label">Task you need completed</label>
+                <input asp-for="TaskTitle" class="form-control" placeholder="Task Name" />
                 <span asp-validation-for="TaskTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TaskDescription" class="control-label">PLEASE DESCRIBE THE TASK IN DETAIL</label>
-                <input asp-for="TaskDescription" class="form-control" placeholder="DESCRIPTION" />
+                <label asp-for="TaskDescription" class="control-label">Please describe your task in detail</label>
+                <input asp-for="TaskDescription" class="form-control" placeholder="Description" />
                 <span asp-validation-for="TaskDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Value" class="control-label">VALUE<sup> *to be donated</sup></label>
+                <label asp-for="Value" class="control-label">Value<sup> *to be donated</sup></label>
                 <input asp-for="Value" class="form-control" />
                 <span asp-validation-for="Value" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label">IMAGE</label>
+                <label asp-for="Image" class="control-label">Image</label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FundId">SELECT A CAUSE TO SUPPORT</label>
+                <label asp-for="FundId">Select a cause to support</label>
                 <select asp-for="FundId" class="form-control" asp-items="ViewBag.fundList"></select>
                 <span asp-validation-for="FundId" class="text-danger"></span>
             </div>

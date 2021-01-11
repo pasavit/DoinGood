@@ -4,56 +4,56 @@
     ViewData["Title"] = "DeedDetail";
 }
 
-<h1>DeedDetail</h1>
+<h1>Details</h1>
 
 <div>
     <h4>Deed</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Catalyst.FirstName)
+            First Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Catalyst.FirstName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fund.FundName)
+            Fund Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Fund.FundName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Beneficence)
+            Beneficence
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Beneficence)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Impact)
+            Impact
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Impact)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DonateAmount)
+            Donate Amount
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DonateAmount)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaxAmount)
+            Max Amount
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MaxAmount)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InspireCount)
+            Inspire Count
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.InspireCount)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ChallengeCount)
+            Challenge Count
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ChallengeCount)
@@ -61,8 +61,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="DeedInspired" asp-route-id="@Model.DeedId">Inspired!</a> |
-    <a asp-action="ChallengeCreate" asp-route-id="@Model.DeedId">Accept Challenge!</a> |
+    <a asp-action="DeedInspired" asp-route-id="@Model.DeedId">I Am Inspired</a> |
+    <a asp-action="ChallengeCreate" asp-route-id="@Model.DeedId">Accept Challenge</a> |
     <a asp-action="DeedDonate" asp-route-id="@Model.DeedId">Donate Directly</a> |
     <a asp-action="DeedEdit" asp-route-id="@Model.DeedId">Edit</a> |
     <a asp-action="DeedIndex">Back to List</a>

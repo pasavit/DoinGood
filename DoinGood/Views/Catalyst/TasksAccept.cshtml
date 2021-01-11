@@ -68,7 +68,7 @@
             @Html.DisplayFor(model => model.Value)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
+            Image:
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Image)
@@ -76,6 +76,6 @@
     </dl>
 </div>
         <div>
-            <a asp-action="TasksCompleted" asp-route-id="@Model.TaskId">Task Complete</a> |
+            <a asp-action="TasksCompleted" asp-route-id="@Model.TaskId">Task Complete!</a> |
             <a asp-action="TasksIndex">Back to List</a>
         </div>
