@@ -1,26 +1,44 @@
 ﻿@model DoinGood.Models.Donate
 
 @{
-    ViewData["Title"] = "DonateDetail";
+    ViewData["Title"] = "DonateBuy";
 }
 
-<h1>DonateDetail</h1>
+<h1>DonateBuy</h1>
 
 <div>
     <h4>Donate</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PosterCatalyst.Address)
+            @Html.DisplayNameFor(model => model.PosterCatalyst)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PosterCatalyst.Address.Zip)
+            @Html.DisplayFor(model => model.PosterCatalyst.FirstName)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PosterCatalyst)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PosterCatalyst.FirstName)
+            @Html.DisplayFor(model => model.PosterCatalyst.EmailAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PosterCatalyst.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PosterCatalyst.Address.StreetAddress), @Html.DisplayFor(model => model.PosterCatalyst.Address.City), @Html.DisplayFor(model => model.PosterCatalyst.Address.State), @Html.DisplayFor(model => model.PosterCatalyst.Address.Zip)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DonorCatalyst)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DonorCatalyst.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DonorCatalyst)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DonorCatalyst.EmailAddress)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Fund)
@@ -55,7 +73,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="DonateBuy" asp-route-id="@Model.DonationId">Buy</a> |
-    <a asp-action="DonateEdit" asp-route-id="@Model.DonationId">Edit</a> |
-    <a asp-action="DonateIndex">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.DonationId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

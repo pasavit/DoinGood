@@ -29,7 +29,12 @@ namespace DoinGood.Data
             {
                 task.PosterCatalyst.AccountBalance += task.Value;
                 task.Fund.CurrentFunds += posterValue;
+                task.Fund.NumberOfDonations++;
                 task.TaskerFund.CurrentFunds += taskerValue;
+                if(taskerValue != 0)
+                {
+                    task.TaskerFund.NumberOfDonations++;
+                }
             }
             return task;
         }
@@ -42,6 +47,10 @@ namespace DoinGood.Data
                 task.PosterCatalyst.AccountBalance += task.Value;
                 task.Fund.CurrentFunds += posterValue;
                 task.TaskerFund.CurrentFunds += taskerValue;
+                if (taskerValue != 0)
+                {
+                    task.TaskerFund.NumberOfDonations++;
+                }
             }
             return task;
         }

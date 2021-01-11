@@ -14,10 +14,12 @@ namespace DoinGood.Controllers
     public class CatalystController : Controller
     {
         private IRepositoryWrapper _repo;
+        private int inspiredFund;
 
         public CatalystController(IRepositoryWrapper repo)
         {
             _repo = repo;
+            inspiredFund = _repo.Fund.InspiredFund().CurrentFunds;
         }
         public ActionResult CatalystIndex()
         {
@@ -63,8 +65,9 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CatalystEdit(Catalyst catalyst)
         {
-            catalyst = _repo.Catalyst.GeoCode(catalyst);
-            _repo.Catalyst.Update(catalyst);
+            var catalystInDb = _repo.Catalyst.GetCatalystDetails(catalyst.CatalystId);
+            catalystInDb = _repo.Catalyst.GeoCode(catalystInDb);
+            _repo.Catalyst.Update(catalystInDb);
             _repo.Save();
             return RedirectToAction("CatalystIndex");
         }
@@ -196,6 +199,30 @@ namespace DoinGood.Controllers
             _repo.Save();
             return RedirectToAction("DonateIndex");
         }
+
+        public ActionResult DonateBuy(int id)
+        {
+            var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            var donate = _repo.Donate.GetDonateDetails(id);
+            if (user != donate.PosterCatalystId)
+            {
+                donate.DonorCatalyst = _repo.Catalyst.GetCatalystDetails(user);
+                _repo.Donate.BuyDonation(donate);
+                inspiredFund++;
+            }
+            _repo.Donate.Update(donate);
+            _repo.Save();
+            return View(donate);
+        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DonateBuy(Donate donate)
+        //{
+        //    _repo.Donate.Update(donate);
+        //    _repo.Save();
+        //    return RedirectToAction("DonateIndex");
+        //}
         /////////////////////////////////////////////////////////////////
         /// Task
         /////////////////////////////////////////////////////////////////
@@ -238,7 +265,8 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TasksEdit(Tasks tasks)
         {
-            _repo.Tasks.Update(tasks);
+            var taskInDb = _repo.Tasks.GetTasksDetails(tasks.TaskId);
+            _repo.Tasks.Update(taskInDb);
             _repo.Save();
             return RedirectToAction("TasksIndex");
         }
@@ -265,16 +293,16 @@ namespace DoinGood.Controllers
         public ActionResult TasksCompleted(Tasks tasks, int taskerValue)
         {
             var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
-            var completedTasks = _repo.Tasks.GetTasksDetails(tasks.TaskId);
-            if (user == completedTasks.PosterCatalystId)
+            var taskInDb = _repo.Tasks.GetTasksDetails(tasks.TaskId);
+            if (user == taskInDb.PosterCatalystId)
             {
-                _repo.Tasks.PosterComplete(completedTasks, taskerValue);
+                _repo.Tasks.PosterComplete(taskInDb, taskerValue);
             }
             else
             {
-                _repo.Tasks.TaskerComplete(completedTasks, taskerValue);
+                _repo.Tasks.TaskerComplete(taskInDb, taskerValue);
             }
-            _repo.Tasks.Update(completedTasks);
+            _repo.Tasks.Update(taskInDb);
             _repo.Save();
             return RedirectToAction("TasksIndex");
         }

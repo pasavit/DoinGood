@@ -10,6 +10,7 @@ namespace DoinGood.Contracts
     {
         Donate GetDonateDetails(int id);
         public List<Donate> DonateList();
+        public Donate BuyDonation(Donate donate);
 
     }
 }

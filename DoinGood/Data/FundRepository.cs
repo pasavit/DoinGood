@@ -19,5 +19,10 @@ namespace DoinGood.Data
             var fundList = new SelectList(FindAll(), "FundId", "FundName");
             return fundList;
         }
+        public Fund InspiredFund()
+        {
+            var inspiredFund = FindByCondition(e => e.FundId == 1).FirstOrDefault();
+            return inspiredFund;
+        }
     }
 }
