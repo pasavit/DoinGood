@@ -249,11 +249,24 @@ namespace DoinGood.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TasksCreate(Tasks tasks)
         {
-            tasks.PosterCatalystId = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+            tasks.PosterCatalystId = user;
             _repo.Tasks.Create(tasks);
+            _repo.Catalyst.CreationFee(user);
+            _repo.Fund.InspiredFund();
             _repo.Save();
             return RedirectToAction("TasksIndex");
         }
+        //public ActionResult TasksCreate(Tasks tasks)
+        //{
+        //    var user = _repo.Catalyst.GetCatalyst(this.User.FindFirstValue(ClaimTypes.NameIdentifier)).CatalystId;
+        //    tasks.PosterCatalyst = _repo.Catalyst.GetCatalystDetails(user);
+        //    _repo.Tasks.Create(tasks);
+        //    _repo.Tasks.CreationFee(tasks);
+        //    _repo.Fund.InspiredFund();
+        //    _repo.Save();
+        //    return RedirectToAction("TasksIndex");
+        //}
         public ActionResult TasksEdit(int id)
         {
             ViewBag.fundList = _repo.Fund.FundList();

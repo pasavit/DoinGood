@@ -13,5 +13,8 @@ namespace DoinGood.Contracts
         Catalyst GetCatalystDetails(int id);
 
         Catalyst GeoCode(Catalyst catalyst);
+
+        public void CreationFee(int id);
+
     }
 }

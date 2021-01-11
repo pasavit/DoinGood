@@ -13,7 +13,13 @@
         <form asp-action="TasksCreate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PosterCatalystId" />
-            <input type="hidden" asp-for="PosterCatalystId" />
+            <input type="hidden" asp-for="TaskerCatalystId" />
+            <input type="hidden" asp-for="PosterComplete" />
+            <input type="hidden" asp-for="TaskerComplete" />
+            <input type="hidden" asp-for="TaskerValue" />
+            <input type="hidden" asp-for="TaskerValue" />
+            <input type="hidden" asp-for="TaskerFundId" />
+            <input type="hidden" asp-for="TaskerFund" />
             <div class="form-group">
                 <label asp-for="TaskTitle" class="control-label">TASK YOU NEED COMPLETED</label>
                 <input asp-for="TaskTitle" class="form-control" placeholder="TASK NAME"/>

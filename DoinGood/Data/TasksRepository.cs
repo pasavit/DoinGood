@@ -20,6 +20,11 @@ namespace DoinGood.Data
             var tasksList = FindAll().Include(e => e.Fund).Include(e => e.PosterCatalyst).Include(e => e.PosterCatalyst.Address).ToList();
             return tasksList;
         }
+        public Tasks CreationFee(Tasks task)
+        {
+            task.PosterCatalyst.AccountBalance++;
+            return task;
+        }
 
         public Tasks PosterComplete(Tasks task, int taskerValue)
         {

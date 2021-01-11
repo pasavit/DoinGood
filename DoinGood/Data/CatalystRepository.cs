@@ -28,5 +28,12 @@ namespace DoinGood.Data
             catalyst.Lng = coords.Longitude;
             return catalyst;
         }
+
+        public void CreationFee(int id)
+        {
+            var user = GetCatalystDetails(id);
+            user.AccountBalance++;
+            Update(user);
+        }
     }
 }
