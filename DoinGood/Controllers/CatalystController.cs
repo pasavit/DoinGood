@@ -250,14 +250,6 @@ namespace DoinGood.Controllers
             return View(donate);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DonateBuy(Donate donate)
-        //{
-        //    _repo.Donate.Update(donate);
-        //    _repo.Save();
-        //    return RedirectToAction("DonateIndex");
-        //}
         /////////////////////////////////////////////////////////////////
         /// Task
         /////////////////////////////////////////////////////////////////
@@ -336,6 +328,29 @@ namespace DoinGood.Controllers
             _repo.Tasks.TaskComplete(tasks, taskerValue, taskerFund, user);
             _repo.Save();
             return RedirectToAction("TasksIndex");
+        }
+        /////////////////////////////////////////////////////////////////
+        /// Monthly PayOut
+        /////////////////////////////////////////////////////////////////
+        
+        public void MonthlyInspireFundBank()
+        {
+            List<Deed> deeds = _repo.Deed.FindAll().ToList();
+            List<Deed> sortedList = deeds.OrderByDescending(c => c.ChallengeCount).ToList();
+            var winner = sortedList[0];
+            var inspiredFund = _repo.Fund.GetFund(1);
+            var prize = inspiredFund.CurrentFunds;
+            DateTime now = DateTime.Now;
+            DateTime firstDay = new DateTime(now.Year, now.Month, 1);
+            if (now == firstDay)
+            {
+                winner.Fund.CurrentFunds += prize;
+                inspiredFund.CurrentFunds -= prize;
+            }
+            foreach (var deed in deeds)
+            {
+                _repo.Deed.Delete(deed);
+            }
         }
     }
 }
