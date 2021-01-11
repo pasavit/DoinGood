@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoinGood.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210109022805_Added Account Balance to Catalyst")]
-    partial class AddedAccountBalancetoCatalyst
+    [Migration("20210111134936_fresh nuke")]
+    partial class freshnuke
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,8 +52,8 @@ namespace DoinGood.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<double>("AccountBalance")
-                        .HasColumnType("float");
+                    b.Property<int>("AccountBalance")
+                        .HasColumnType("int");
 
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
@@ -346,6 +346,9 @@ namespace DoinGood.Migrations
                     b.Property<bool>("PosterComplete")
                         .HasColumnType("bit");
 
+                    b.Property<int>("PosterValue")
+                        .HasColumnType("int");
+
                     b.Property<string>("TaskDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -358,6 +361,12 @@ namespace DoinGood.Migrations
                     b.Property<bool>("TaskerComplete")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("TaskerFundId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TaskerValue")
+                        .HasColumnType("int");
+
                     b.Property<int>("Value")
                         .HasColumnType("int");
 
@@ -368,6 +377,8 @@ namespace DoinGood.Migrations
                     b.HasIndex("PosterCatalystId");
 
                     b.HasIndex("TaskerCatalystId");
+
+                    b.HasIndex("TaskerFundId");
 
                     b.ToTable("Tasks");
                 });
@@ -401,15 +412,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c2d08bc2-b3e9-44da-b88b-c3aa2f22e5c5",
-                            ConcurrencyStamp = "250c07d9-986a-42ee-8d9d-d1be74d43bfd",
+                            Id = "c50f8b11-ac51-42e7-a759-cc4c42ea9f7a",
+                            ConcurrencyStamp = "f0572d19-ca04-40e0-86bc-769c295869a6",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "a73003ae-f386-4351-ad58-246cebc08a23",
-                            ConcurrencyStamp = "c6b0de75-4741-4786-b6b8-4981665a735b",
+                            Id = "8535e4b6-fc0d-4877-a6ee-d25e96e70454",
+                            ConcurrencyStamp = "e1a64cdc-ff1b-4473-9fa6-f091a6d1bd03",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -682,11 +693,17 @@ namespace DoinGood.Migrations
                         .WithMany()
                         .HasForeignKey("TaskerCatalystId");
 
+                    b.HasOne("DoinGood.Models.Fund", "TaskerFund")
+                        .WithMany()
+                        .HasForeignKey("TaskerFundId");
+
                     b.Navigation("Fund");
 
                     b.Navigation("PosterCatalyst");
 
                     b.Navigation("TaskerCatalyst");
+
+                    b.Navigation("TaskerFund");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -44,15 +44,17 @@
                     <li><a asp-controller="Catalyst" asp-action="DeedIndex">DEEDS</a></li>
                     <li><a asp-controller="Catalyst" asp-action="DonateIndex">DONATIONS</a></li>
                     <li><a asp-controller="Catalyst" asp-action="TasksIndex">TASKS</a></li>
-                    <li><a asp-controller="Home" asp-action="Conttact">CONTACT</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">CONTACT</a></li>
                     @*<li><a href="blog.html">Contact</a></li>*@
                     <li class="drop-down">
                         <a href="">User</a>
                         <ul>
                             <li><a asp-area="Identity" asp-page="/Account/Register">REGISTER</a></li>
                             <li><a asp-area="Identity" asp-page="/Account/Login">LOG IN</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Logout">LOG OUT</a></li>
                         </ul>
                     </li>
+
 
                 </ul>
             </nav><!-- .nav-menu -->
@@ -92,7 +94,12 @@
 
             <div class="row">
                 <div class="col-lg-9 text-center text-lg-left">
-                    <p> Doin’ Good takes “Do just one thing for another” to the next level. Users can Donate an item, post Tasks – help needed, or Deeds – actions, acts of kindness, helped someone, brightened someone’s day; literally anything that made yours or someone else’s heart fill with that feeling we all have experienced, Helpers’ High** . Users can then challenge others to spread the good! Sometimes a small deed can inspire a great chain of kindness.</p>
+                    <p> Doin’ Good takes “Do just one thing for another” to the next level. Users can Donate an item, post Tasks – help needed, or Deeds – actions, acts of kindness, helped someone, brightened someone’s day; literally anything that made yours or someone else’s heart fill with that feeling we all have experienced, Helpers’ High** . Users can then challenge others to spread the good! Sometimes a small deed can inspire a great chain of kindness.</p><br/>
+                    <hr/>
+                    @*<p>
+                        <br/>**Helpers’ high is a term coined by psychologists to describe a euphoric feeling, followed by a longer period of calmness, experienced after performing a kind act. It is often referred to as a positive addiction and related to the economic concept of warm-glow giving.<br />
+                        The physical sensation results from the release of endorphins, and is followed by a longer-lasting period of improved emotional well-being and sense of self-worth, feelings that in turn reduce stress and improve the health of the helper.
+                    </p>*@
                 </div>
                 <div class="col-lg-3 cta-btn-container text-center">
                     <a class="cta-btn align-middle" asp-controller="Catalyst" asp-action="DeedCreate">GET DOIN!</a>

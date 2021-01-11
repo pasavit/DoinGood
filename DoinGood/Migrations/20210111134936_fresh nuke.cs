@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DoinGood.Migrations
 {
-    public partial class removedaddressFKfromDonatenuke : Migration
+    public partial class freshnuke : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -202,7 +202,8 @@ namespace DoinGood.Migrations
                     EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Lat = table.Column<double>(type: "float", nullable: false),
-                    Lng = table.Column<double>(type: "float", nullable: false)
+                    Lng = table.Column<double>(type: "float", nullable: false),
+                    AccountBalance = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -339,7 +340,12 @@ namespace DoinGood.Migrations
                     TaskTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TaskDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Value = table.Column<int>(type: "int", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PosterComplete = table.Column<bool>(type: "bit", nullable: false),
+                    TaskerComplete = table.Column<bool>(type: "bit", nullable: false),
+                    PosterValue = table.Column<int>(type: "int", nullable: false),
+                    TaskerValue = table.Column<int>(type: "int", nullable: false),
+                    TaskerFundId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -362,6 +368,12 @@ namespace DoinGood.Migrations
                         principalTable: "Fund",
                         principalColumn: "FundId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tasks_Fund_TaskerFundId",
+                        column: x => x.TaskerFundId,
+                        principalTable: "Fund",
+                        principalColumn: "FundId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -369,8 +381,8 @@ namespace DoinGood.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0810ffcd-4f82-4c1a-867c-2be627bb2b5e", "30830841-5271-48de-a2e7-70e6b63c3b93", "Benefactor", "BENEFACTOR" },
-                    { "43d0827a-2567-49f1-92b5-924e9f24c299", "9fe52b7e-5b39-49ae-a0b6-7d102d92239a", "Admin", "ADMIN" }
+                    { "c50f8b11-ac51-42e7-a759-cc4c42ea9f7a", "f0572d19-ca04-40e0-86bc-769c295869a6", "Benefactor", "BENEFACTOR" },
+                    { "8535e4b6-fc0d-4877-a6ee-d25e96e70454", "e1a64cdc-ff1b-4473-9fa6-f091a6d1bd03", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -493,6 +505,11 @@ namespace DoinGood.Migrations
                 name: "IX_Tasks_TaskerCatalystId",
                 table: "Tasks",
                 column: "TaskerCatalystId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tasks_TaskerFundId",
+                table: "Tasks",
+                column: "TaskerFundId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

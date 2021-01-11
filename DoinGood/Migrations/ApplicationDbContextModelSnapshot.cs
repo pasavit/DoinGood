@@ -410,15 +410,15 @@ namespace DoinGood.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d4546585-8735-43f4-bf5c-1e809ad5d326",
-                            ConcurrencyStamp = "d6e7bf69-d2fd-454f-bb79-2bf09ce0e593",
+                            Id = "c50f8b11-ac51-42e7-a759-cc4c42ea9f7a",
+                            ConcurrencyStamp = "f0572d19-ca04-40e0-86bc-769c295869a6",
                             Name = "Benefactor",
                             NormalizedName = "BENEFACTOR"
                         },
                         new
                         {
-                            Id = "5d5b2429-9d1f-4b82-9faa-da8f8db8c7db",
-                            ConcurrencyStamp = "ad3ee30e-87df-475a-a1dd-efda82ff2241",
+                            Id = "8535e4b6-fc0d-4877-a6ee-d25e96e70454",
+                            ConcurrencyStamp = "e1a64cdc-ff1b-4473-9fa6-f091a6d1bd03",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
